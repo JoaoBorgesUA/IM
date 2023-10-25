@@ -1,0 +1,152 @@
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\bin\Debug\AppGui.exe.config
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\bin\Debug\AppGui.exe
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\bin\Debug\AppGui.pdb
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\bin\Debug\mmisharp.dll
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\bin\Debug\mmisharp.pdb
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui.csprojResolveAssemblyReference.cache
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\MainWindow.g.cs
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\App.g.cs
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\MainWindow.baml
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui.g.resources
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui.csproj.GenerateResource.Cache
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui.exe
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\obj\Debug\AppGui.pdb
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\bin\Debug\Newtonsoft.Json.dll
+c:\users\nunof\documents\visual studio 2017\Projects\AppGui\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\Users\AJST\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\AppGui.exe.config
+C:\Users\AJST\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.exe
+C:\Users\AJST\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.pdb
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\AppGui.exe.config
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\AppGui.exe
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\AppGui.pdb
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\mmisharp.dll
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\Newtonsoft.Json.dll
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\mmisharp.pdb
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\Newtonsoft.Json.xml
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.csprojResolveAssemblyReference.cache
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\MainWindow.g.cs
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\App.g.cs
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\MainWindow.baml
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.g.resources
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.csproj.GenerateResource.Cache
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.csproj.CoreCompileInputs.cache
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.exe
+D:\cloud\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.pdb
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\AppGui.exe.config
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\AppGui.exe
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\AppGui.pdb
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\mmisharp.dll
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\mmisharp.pdb
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.csprojResolveAssemblyReference.cache
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\MainWindow.g.cs
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\App.g.cs
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\MainWindow.baml
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.g.resources
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.csproj.GenerateResource.Cache
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.exe
+C:\Users\nunof\Dropbox\SGH\IM\AppGui\AppGui\obj\Debug\AppGui.pdb
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\bin\Debug\AppGui.exe.config
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\bin\Debug\AppGui.exe
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\bin\Debug\AppGui.pdb
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\bin\Debug\Newtonsoft.Json.dll
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\bin\Debug\mmisharp.pdb
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui.csprojResolveAssemblyReference.cache
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\MainWindow.g.cs
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\App.g.cs
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\MainWindow.baml
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui.g.resources
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui.csproj.GenerateResource.Cache
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui.csproj.CoreCompileInputs.cache
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui.exe
+C:\Users\AJST\Dropbox\IM-2017-2018-2ndSem\AULAS\AULA6-PRATICAL\forStudents\AppGui\AppGui\obj\Debug\AppGui.pdb
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\bin\Debug\AppGui.exe.config
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\bin\Debug\AppGui.exe
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\bin\Debug\AppGui.pdb
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\bin\Debug\Newtonsoft.Json.dll
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\bin\Debug\mmisharp.pdb
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.csprojAssemblyReference.cache
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\MainWindow.g.cs
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\App.g.cs
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\MainWindow.baml
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.g.resources
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.csproj.GenerateResource.cache
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.csproj.CoreCompileInputs.cache
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.csproj.CopyComplete
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.exe
+C:\CADEIRAS\InteracaoMultimodal\2029_2020_2sem\NewSpeechIOModality\Basis4Assignment2_newVersionApril2020\AppGui\AppGui\obj\Debug\AppGui.pdb
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\bin\Debug\AppGui.exe.config
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\bin\Debug\AppGui.exe
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\bin\Debug\AppGui.pdb
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\bin\Debug\mmisharp.pdb
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.AssemblyReference.cache
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\MainWindow.g.cs
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\App.g.cs
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\MainWindow.baml
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.g.resources
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.GenerateResource.cache
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.CoreCompileInputs.cache
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.CopyComplete
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.exe
+C:\Users\ajst\Downloads\Basis4Assignment2_newVersionApril2020\Basis4Assignment2_newVersionApril2020\AppGui_CSharp\AppGui\obj\Debug\AppGui.pdb
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\AppGui.exe.config
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\AppGui.exe
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\AppGui.pdb
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\Newtonsoft.Json.dll
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\mmisharp.pdb
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.AssemblyReference.cache
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\MainWindow.g.cs
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\App.g.cs
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\MainWindow.baml
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.g.resources
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.GenerateResource.cache
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.CoreCompileInputs.cache
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.CopyComplete
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.exe
+C:\Users\João Borges\Downloads\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.pdb
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\AppGui.exe.config
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\AppGui.exe
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\AppGui.pdb
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\Newtonsoft.Json.dll
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\mmisharp.pdb
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\bin\Debug\Newtonsoft.Json.xml
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.AssemblyReference.cache
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\MainWindow.g.cs
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\App.g.cs
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui_MarkupCompile.cache
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui_MarkupCompile.lref
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\MainWindow.baml
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.g.resources
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.Properties.Resources.resources
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.GenerateResource.cache
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.CoreCompileInputs.cache
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.csproj.CopyComplete
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.exe
+C:\Users\João Borges\Downloads\DemoMMI\AppGui_CSharp\AppGui_CSharp\AppGui\obj\Debug\AppGui.pdb
