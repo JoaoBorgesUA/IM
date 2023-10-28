@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\João Borges\\Downloads\\DemoMMI\\ConsoleApp\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {}
+    "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\João Borges\\Downloads\\DemoMMI\\ConsoleApp\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {
+    "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João Borges\\Downloads\\DemoMMI\\ConsoleApp\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+        "projectUniqueName": "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
         "projectName": "ConsoleApp",
-        "projectPath": "C:\\Users\\João Borges\\Downloads\\DemoMMI\\ConsoleApp\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+        "projectPath": "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
         "packagesPath": "C:\\Users\\João Borges\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João Borges\\Downloads\\DemoMMI\\ConsoleApp\\ConsoleApp\\ConsoleApp\\obj\\",
+        "outputPath": "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\João Borges\\AppData\\Roaming\\NuGet\\NuGet.Config",

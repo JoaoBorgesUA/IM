@@ -47,8 +47,20 @@ class Program
                 string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
                 Console.WriteLine("Received message: " + message);
 
-                // Handle the message and your logic here
-                // Example: im1MessageHandler(message);
+                //using (IWebDriver driver = new ChromeDriver())
+                //{
+                //    // Navigate to a webpage
+                //    driver.Navigate().GoToUrl("https://example.com");
+
+                //    // You can perform various actions on the webpage, for example, finding an element by its ID and interacting with it
+                //    IWebElement element = driver.FindElement(By.Id("elementId"));
+                //    element.SendKeys("Hello, Selenium!");
+
+                //    // Close the WebDriver
+                //    driver.Quit();
+                //}
+
+                //Console.ReadLine(); // Keep the application running
             }
         }
     }
