@@ -11,7 +11,6 @@ im_url_app = 'https://127.0.0.1:8000/IM/USER1/APP'
 im_url_appx = 'https://127.0.0.1:8000/IM/USER1/APPX'
 
 
-
 def send_to_IM(data, source=None):
     """constroi e envia a mensagem para o IM"""
 

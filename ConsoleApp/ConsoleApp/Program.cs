@@ -3,8 +3,12 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Xml.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Interactions;
 
 class Program
 {
@@ -40,6 +44,11 @@ class Program
     {
         byte[] buffer = new byte[1024];
 
+        // Quero tirar os erros de ssl depois mas ainda n vi como
+
+        IWebDriver driver = new ChromeDriver(@"C:\Users\35191\Downloads\chromedriver-win64\chromedriver-win64");
+        bool gameOpen = false;
+
         while (client.State == WebSocketState.Open)
         {
             WebSocketReceiveResult result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
@@ -47,25 +56,135 @@ class Program
             if (result.MessageType == WebSocketMessageType.Text)
             {
                 string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                Console.WriteLine("Received message: " + message);
 
-                //using (IWebDriver driver = new ChromeDriver())
-                //{
-                //    // Navigate to a webpage
-                //    driver.Navigate().GoToUrl("https://example.com");
+                if (message == "OK")
+                {
+                    Console.WriteLine("Received message OK: " + message);
+                }
+                else if (message != null && message!="RENEW")
+                {
+                    Console.WriteLine("Received message: " + message);
 
-                //    // You can perform various actions on the webpage, for example, finding an element by its ID and interacting with it
-                //    IWebElement element = driver.FindElement(By.Id("elementId"));
-                //    element.SendKeys("Hello, Selenium!");
+                    var doc = XDocument.Parse(message);
+                    var com = doc.Descendants("command").FirstOrDefault().Value;
+                    dynamic messageJSON = JsonConvert.DeserializeObject(com);
 
-                //    // Close the WebDriver
-                //    driver.Quit();
-                //}
+                    //Console.WriteLine(messageJSON["nlu"] == null ? "Sim" : "Nao");
 
-                //Console.ReadLine(); // Keep the application running
+                    // Because of the runtime error
+                    if (messageJSON["nlu"] != null)
+                    {
+                        string intent = (string)messageJSON["nlu"]["intent"];
+
+                        if (intent == "open_game")
+                        {
+                            //driver = new ChromeDriver(@"C:\Users\35191\Downloads\chromedriver-win64\chromedriver-win64");
+                            driver.Navigate().GoToUrl("https://www.shellshock.io");   //Open a URL
+
+                            try
+                            {
+                                // Find the "Accept Cookies" button by its class name
+                                IWebElement acceptCookiesButton = driver.FindElement(By.ClassName("cmpboxbtn"));
+
+                                // Click the "Accept Cookies" button
+                                acceptCookiesButton.Click();
+                            }
+                            catch (NoSuchElementException)
+                            {
+                                // Handle the case where the "Accept Cookies" button is not found
+                                // You can log a message or take appropriate action
+                            }
+
+                            gameOpen = true;
+                        }
+
+                        if (intent == "close_game")
+                        {
+                            if (gameOpen)
+                            {
+                                driver.Close(); // close tab
+                                driver.Quit();  // Close the browser
+                            }
+                            else
+                            {
+                                // fazer com q o sistema fale connosco a dizer que o jogo ainda nao esta aberto
+                            }
+                        }
+
+                        if (intent == "start_game")
+                        {
+                            if (gameOpen)
+                            {
+                                IWebElement playButton = driver.FindElement(By.ClassName("play-button"));
+                                playButton.Click();
+                            }
+                            else
+                            {
+                                // fazer com q o sistema fale connosco a dizer que o jogo ainda nao esta aberto
+                            }
+                        }
+
+                        // nao esta a dar , nao sei que nome usar no id ou classname!!! 
+                        if (intent == "close_tutorial_popup")
+                        {
+                            if (gameOpen)
+                            {
+                                IWebElement closePopup = driver.FindElement(By.ClassName("clickme"));
+                                closePopup.Click();
+                            }
+                            else
+                            {
+                                // fazer com q o sistema fale connosco a dizer que o jogo ainda nao esta aberto
+                            }
+                        }
+
+                        // ver melhor aqui
+                        if (intent == "Forward")
+                        {
+                            //Actions action = new Actions(driver);
+                           
+                            // Send the 'W' key to move the character forward
+                            //while (true)
+                            //{
+                            //    action.SendKeys(OpenQA.Selenium.Keys.Control + "W").Build().Perform();
+                            //}
+                        }
+
+                        //action.SendKeys(OpenQA.Selenium.Keys.Escape).Build().Perform(); // sair da tela total
+
+                        if (intent == "shoot")  // ainda n esta no intent mas funciona assim
+                        {
+                            IWebElement game_canvas = driver.FindElement(By.Id("canvas"));
+                            game_canvas.Click();
+                        }
+                    }
+                }
             }
         }
     }
+
+    //IWebElement gotoPerfil = driver.FindElement(By.ClassName("btn-account-status"));
+    //IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+    //js.ExecuteScript("arguments[0].scrollIntoView();", gotoPerfil);
+    //                    playButton.Click();
+
+    //                    // Click the "Accept Cookies" button
+    //                    gotoPerfil.Click();
+
+    //using (IWebDriver driver = new ChromeDriver())
+    //{
+    //    // Navigate to a webpage
+    //    driver.Navigate().GoToUrl("https://www.shellshock.io");
+
+    //    // You can perform various actions on the webpage, for example, finding an element by its ID and interacting with it
+    //    //IWebElement element = driver.FindElement(By.Id("elementId"));
+    //    //element.SendKeys("Hello, Selenium!");
+
+    //    // Close the WebDriver
+    //    //driver.Quit();
+    //}
+
+    //Console.ReadLine(); // Keep the application running
 
     // Define your im1MessageHandler function here for processing WebSocket messages
     // static void im1MessageHandler(string data) { }

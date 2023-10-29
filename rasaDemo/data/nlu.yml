@@ -72,30 +72,41 @@ nlu:
     - Por o [circulo](shape) em  [branco](color)
     - Mudar para [azul](color) o [circulo](shape) 
 
-- intent: open_site
+- intent: open_game
   examples: |
-    - Podes abrir uma tab com o jogo?
+    - Abrir jogo  
     - Abre o jogo
+    - Abre-te sesamo 
+    - Podes abrir uma tab com o jogo?
     - Podes abrir uma página com o jogo por favor?
     - Podes abrir uma página com o jogo?
     - Abre a página
     - Quero abrir a página com o jogo
     - Quero abrir a página para jogar
-    - Abre-te sesamo
-    - Podes abrir a página do shellshockers?
+    - Podes abr
+    - ir a página do shellshockers?
 
-- intent: Start
+- intent: close_game
   examples: |
+    - Sair do jogo  
+    - Fechar tab do jogo
+
+- intent: start_game
+  examples: |
+    - Iniciar jogo  
     - Começa o jogo
     - Podes iniciar o jogo
     - Quero jogar
-    - Iniciar jogo
     - Quero começar um jogo novo
     - Posso jogar
     - Iniciar
     - Começar
     - Podes começar um novo jogo por favor?
     - Podes começar um novo jogo?
+
+- intent: close_tutorial_popup
+  examples: |
+    - Fechar popup
 
 - intent: Stop
   examples: |
@@ -119,3 +130,10 @@ nlu:
     - Começa a correr
     - Corre
     - Podes andar para a frente?
+
+- intent: move
+  examples: |
+    - Andar para a [direita]
+    - Andar para a [esquerda]
+    - Andar para a [frente]
+    - Andar para [tras] 

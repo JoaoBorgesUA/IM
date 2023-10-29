@@ -54,11 +54,6 @@
     <button id="start-btn">Start</button>
     -->
 
-
-
-
-    
-
     <div class="bottomNav">
       <div id="response" class=""  style="">d</div>
       <div class="container" style="border: solid 2px #4F5D73;margin: 2%;"> 
@@ -105,8 +100,6 @@
         </div>
     </div>
 
-  
-
     <div id="energy"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@latest/dist/svg.min.js"></script>
@@ -150,6 +143,8 @@
             casa_vivaStarted = null;
         }, 60 * 60 * 1000);
 
+
+        // Handle MICROPHONE
         const onSampleComplete = (obj) => {
             if (!isOnKWS)
                 sensor.takeSample(500, 16000, () => { }).then(onSampleComplete);
@@ -167,7 +162,7 @@
                 let window = allData.slice(allData.length - windowSize, allData.length);
 
                 let noiseCount = 0;
-                let casa_vivaCount = 0;
+                //let casa_vivaCount = 0;
                 let uncertainCount = 0;
 
                 for (let wx = 0; wx <= windowSize - classifyWindowLength; wx += classifyWindowOverlap) {
@@ -182,27 +177,41 @@
 
                     classifyResult = classifyCache[cacheKey];
                     let noise = classifyResult.results.find(r => r.label === 'noise').value;
-                    let casa_viva = classifyResult.results.find(r => r.label === 'casa_viva').value;
+                    //let casa_viva = classifyResult.results.find(r => r.label === 'casa_viva').value;
 
-                    if (casa_viva > .3)
-                        console.log(casa_viva);
-                    if (noise >= 0.5) {
+                    // without any dependency to speak
+                    if (noise >= 0.2) {
                         noiseCount++;
                     }
-                    else if (casa_viva >= 0.6) {
-                        casa_vivaCount++;
-
-                        if (!isOnKWS) {
+                    else if (!isOnKWS) {
                             recognition.start();
                             circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
                             transcriptDiv.textContent = "...";
                             isOnKWS = true;
-                        }
-
                     }
                     else {
                         uncertainCount++;
                     }
+
+                    // TIRAR se concordares
+                    //if (casa_viva > .3)
+                    //    console.log(casa_viva);
+                    //if (noise >= 0.5) {
+                    //    noiseCount++;
+                    //}
+                    //else if (casa_viva >= 0.6) {
+                    //    casa_vivaCount++;
+
+                    //    if (!isOnKWS) {
+                    //        recognition.start();
+                    //        circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
+                    //        transcriptDiv.textContent = "...";
+                    //        isOnKWS = true;
+                    //    }
+                    //}
+                    //else {
+                    //    uncertainCount++;
+                    //}
                 }
             }
             //console.timeEnd('classifyWindow');
@@ -382,9 +391,8 @@
         var mmiCli_1 = null;
         mmiCli_1 = new MMIClient(null, mmi_fusion + "SPEECHIN");
 
-
-
         //É AQUI!!
+        // This function send a message to NLU (rasa) 
         function sendMMI(final_transcript) {
 
             var obj = new Object();
@@ -392,42 +400,106 @@
 
             $.post("http://localhost:5005/model/parse", JSON.stringify(obj), function (data) {
 
-                if (data.intent.name == 'open_site') {
-                    var newTab = window.open("https://www.shellshock.io", "_blank");
+                switch (data.intent.name)
+                {
+                    case ('open_game'):
+                        var message = { 'intent': 'open_game' };
+                        break;
+
+                    case ('close_game'):
+                        var message = { 'intent': 'close_game' };
+                        break;
+
+                    case ('start_game'):
+                        var message = { 'intent': 'start_game' };
+                        break;
+
+                    case ('close_tutorial_popup'):
+                        var message = { 'intent': 'close_tutorial_popup' };
+                        break;
+
+                    case ('Forward'):
+                        var message = { 'intent': 'Forward' };
+                        break;
+
+                    case ('affirm'):
+                        // Select the "Play" button by its class name
+                        var playButton = document.querySelector('.play-button');
+                        console.log(playbutton)
+                        // Check if the button is not disabled (enabled)
+                        if (playButton && !playButton.hasAttribute('disabled')) {
+                            // Trigger a click event on the button
+                            playButton.click();
+                        } else {
+                            console.log("The 'Play' button is disabled.");
+                        }
+                        break;
+
+                    case ('change_color'):
+                        var shape = '';
+                        var color = '';
+
+                        for (let i = 0; i < data.entities.length; i++) {
+                            if (data.entities[i].entity == 'shape')
+                                shape = data.entities[i].value;
+                            if (data.entities[i].entity == 'color')
+                                color = data.entities[i].value;
+                        }
+
+                        var message = { 'intent': 'change_color', 'shape': shape, 'color': color }
+                        break;
                 }
 
-                if (data.intent.name == 'affirm') {
-
-                    // Select the "Play" button by its class name
-                    var playButton = document.querySelector('.play-button');
-                    console.log(playbutton)
-                    // Check if the button is not disabled (enabled)
-                    if (playButton && !playButton.hasAttribute('disabled')) {
-                        // Trigger a click event on the button
-                        playButton.click();
-                    } else {
-                        console.log("The 'Play' button is disabled.");
-                    }
-                }
-
-                if (data.intent.name == 'change_color') {
-                    var shape = '';
-                    var color = '';
-
-                    for (let i = 0; i < data.entities.length; i++) {
-                        if (data.entities[i].entity == 'shape')
-                            shape = data.entities[i].value;
-                        if (data.entities[i].entity == 'color')
-                            color = data.entities[i].value;
-                    }
-
-                    var message = { 'intent': 'change_color', 'shape': shape, 'color': color }
-                    var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
-                    var result = { "recognized": ["SPEECH", "SPEECHIN", "APP"], "text": messaget, "nlu": message };
-                    mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
-                        doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
+                var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
+                var result = { "recognized": ["SPEECH", "SPEECHIN", "APP"], "text": messaget, "nlu": message };
+                mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
+                         doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
                             setValue(JSON.stringify(result))));
-                }
+
+                //if (data.intent.name == 'open_game') {
+                //    var message = { 'intent': 'open_game'}
+                //    var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
+                //    var result = { "recognized": ["SPEECH", "SPEECHIN", "APP"], "text": messaget, "nlu": message };
+                //    mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
+                //        doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
+                //            setValue(JSON.stringify(result))));
+                //}
+                //if (data.intent.name == 'open_site') {
+                //    var newTab = window.open("https://www.shellshock.io", "_blank");
+                //}
+
+                //if (data.intent.name == 'affirm') {
+
+                //    // Select the "Play" button by its class name
+                //    var playButton = document.querySelector('.play-button');
+                //    console.log(playbutton)
+                //    // Check if the button is not disabled (enabled)
+                //    if (playButton && !playButton.hasAttribute('disabled')) {
+                //        // Trigger a click event on the button
+                //        playButton.click();
+                //    } else {
+                //        console.log("The 'Play' button is disabled.");
+                //    }
+                //}
+
+                //if (data.intent.name == 'change_color') {
+                //    var shape = '';
+                //    var color = '';
+
+                //    for (let i = 0; i < data.entities.length; i++) {
+                //        if (data.entities[i].entity == 'shape')
+                //            shape = data.entities[i].value;
+                //        if (data.entities[i].entity == 'color')
+                //            color = data.entities[i].value;
+                //    }
+
+                //    var message = { 'intent': 'change_color', 'shape': shape, 'color': color }
+                //    var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
+                //    var result = { "recognized": ["SPEECH", "SPEECHIN", "APP"], "text": messaget, "nlu": message };
+                //    mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
+                //        doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
+                //            setValue(JSON.stringify(result))));
+                //}
             });
 
             /*
