@@ -74,21 +74,18 @@ nlu:
 
 - intent: open_game
   examples: |
-    - Abrir jogo  
-    - Abre o jogo
+    - Abrir jogo shellshockers
     - Abre-te sesamo 
     - Podes abrir uma tab com o jogo?
     - Podes abrir uma página com o jogo por favor?
     - Podes abrir uma página com o jogo?
-    - Abre a página
     - Quero abrir a página com o jogo
     - Quero abrir a página para jogar
-    - Podes abr
-    - ir a página do shellshockers?
+    - Ir a página do shellshockers?
 
 - intent: close_game
   examples: |
-    - Sair do jogo  
+    - Sair do jogo
     - Fechar tab do jogo
 
 - intent: start_game
@@ -108,7 +105,7 @@ nlu:
   examples: |
     - Fechar popup
 
-- intent: Stop
+- intent: stop
   examples: |
     - Para
     - Stop
@@ -118,7 +115,7 @@ nlu:
     - Para agora
     - Encosta ai
 
-- intent: Forward
+- intent: forward
   examples: |
     - Para a frente
     - Vai para a frente
@@ -133,7 +130,28 @@ nlu:
 
 - intent: move
   examples: |
-    - Andar para a [direita]
-    - Andar para a [esquerda]
-    - Andar para a [frente]
-    - Andar para [tras] 
+    - Andar para a [direita] (direction)
+    - Andar para a [esquerda] (direction)
+    - Andar para a [frente] (direction)
+    - Andar para [tras] (direction)
+    - Mover para a [direita] (direction)
+    - Mover para a [esquerda] (direction)
+    - Mover para a [frente] (direction)
+    - Mover para [tras] (direction)
+    - Deslocar para a [direita] (direction)
+    - Deslocar para a [esquerda] (direction)
+    - Deslocar para a [frente] (direction)
+    - Deslocar para [tras] (direction)
+
+- intent: shoot
+  examples: |
+    - Disparar 
+    - Atirar fogo
+
+- intent: jump
+  examples: |
+    - Saltar
+    - Pular
+
+
+  

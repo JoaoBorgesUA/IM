@@ -162,7 +162,8 @@
                 let window = allData.slice(allData.length - windowSize, allData.length);
 
                 let noiseCount = 0;
-                //let casa_vivaCount = 0;
+                let casa_vivaCount = 0;
+                //let jogarCount = 0;
                 let uncertainCount = 0;
 
                 for (let wx = 0; wx <= windowSize - classifyWindowLength; wx += classifyWindowOverlap) {
@@ -177,30 +178,32 @@
 
                     classifyResult = classifyCache[cacheKey];
                     let noise = classifyResult.results.find(r => r.label === 'noise').value;
-                    //let casa_viva = classifyResult.results.find(r => r.label === 'casa_viva').value;
+                    let casa_viva = classifyResult.results.find(r => r.label === 'casa_viva').value;
+                    //let jogar = classifyResult.results.find(r => r.label === 'jogar').value;
 
-                    // without any dependency to speak
-                    if (noise >= 0.2) {
-                        noiseCount++;
-                    }
-                    else if (!isOnKWS) {
-                            recognition.start();
-                            circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
-                            transcriptDiv.textContent = "...";
-                            isOnKWS = true;
-                    }
-                    else {
-                        uncertainCount++;
-                    }
 
-                    // TIRAR se concordares
-                    //if (casa_viva > .3)
-                    //    console.log(casa_viva);
-                    //if (noise >= 0.5) {
+                    /****** Without any dependency to speak ******/
+                    // if (noise >= 0.5) {
+                    //     noiseCount++;
+                    // }
+                    // else if (!isOnKWS) {
+                    //         recognition.start();
+                    //         circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
+                    //         transcriptDiv.textContent = "...";
+                    //         isOnKWS = true;
+                    // }
+                    // else {
+                    //     uncertainCount++;
+                    // }
+
+                    /****** Dependecy = 'Jogar' -- ver melhor esta a dar erro ******/ 
+                    // if (jogar > .3)
+                    //    console.log(jogar);
+                    // if (noise >= 0.5) {
                     //    noiseCount++;
-                    //}
-                    //else if (casa_viva >= 0.6) {
-                    //    casa_vivaCount++;
+                    // }
+                    // else if (jogar >= 0.6) {
+                    //     jogarCount++;
 
                     //    if (!isOnKWS) {
                     //        recognition.start();
@@ -208,10 +211,31 @@
                     //        transcriptDiv.textContent = "...";
                     //        isOnKWS = true;
                     //    }
-                    //}
-                    //else {
+                    // }
+                    // else {
                     //    uncertainCount++;
-                    //}
+                    // }
+
+                    /****** Dependecy = 'Casa Viva' -- ver melhor esta a dar erro ******/ 
+                    // 0.3 , 0.5, 0.6
+                    if (casa_viva > .1)
+                       console.log(casa_viva);
+                    if (noise >= 0.5) {
+                       noiseCount++;
+                    }
+                    else if (casa_viva >= 0.5) {
+                       casa_vivaCount++;
+
+                       if (!isOnKWS) {
+                           recognition.start();
+                           circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
+                           transcriptDiv.textContent = "...";
+                           isOnKWS = true;
+                       }
+                    }
+                    else {
+                       uncertainCount++;
+                    }
                 }
             }
             //console.timeEnd('classifyWindow');
@@ -402,11 +426,11 @@
 
                 switch (data.intent.name)
                 {
-                    case ('open_game'):
+                    case ('open_game'):     // Abrir website do jogo
                         var message = { 'intent': 'open_game' };
                         break;
 
-                    case ('close_game'):
+                    case ('close_game'):    // Fechar website do jogo
                         var message = { 'intent': 'close_game' };
                         break;
 
@@ -418,8 +442,21 @@
                         var message = { 'intent': 'close_tutorial_popup' };
                         break;
 
-                    case ('Forward'):
-                        var message = { 'intent': 'Forward' };
+                    case ('forward'):
+                        var message = { 'intent': 'forward' };
+                        break;
+
+                    case ("shoot"):
+                        var message = { 'intent': 'shoot' };
+                            break;
+                
+                    case ("jump"):
+                        var message = { 'intent': 'jump' };
+                                break;
+
+                    case ("move"):
+                        var direction = data.entities[0].value;
+                        var message = { 'intent': 'move', 'direction': direction}
                         break;
 
                     case ('affirm'):
@@ -518,16 +555,12 @@
 
 
         function socketOpenHandler(event) {
-            console.log("---------------openSocketHandler---------------")
-
             if (mmiCli_Out.socket.readyState !== WebSocket.OPEN) {
                 return;
             }
         }
 
         function im1MessageHandler(data) {
-
-            console.log("--------------im1MessageHandler---------------");
 
             if (data != null && data != "RENEW" && data != "OK") {
 
