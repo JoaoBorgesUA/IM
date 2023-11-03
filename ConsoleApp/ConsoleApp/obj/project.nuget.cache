@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "Wh5TH3l8twk10TTzQA/B4WItWn5iytNa+KZ1eHjxU3sZLHIj89be3UYqnv0VnumYmJo1kKdo9gKPxv/f/WCIcQ==",
+  "dgSpecHash": "eL1glOWaGI9EObVhzD5+H5+rVpFoRvM6SNsJpeqM7Y7qqMkYapeG2HgXaJ0SmXneh6DSMnRIzLqStSPf7a2Y5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\35191\\Documents\\UA\\5_Ano\\IM\\Assignment2\\Git\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\35191\\.nuget\\packages\\inputsimulator\\1.0.4\\inputsimulator.1.0.4.nupkg.sha512",
     "C:\\Users\\35191\\.nuget\\packages\\microsoft.netcore.platforms\\6.0.2\\microsoft.netcore.platforms.6.0.2.nupkg.sha512",
     "C:\\Users\\35191\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\35191\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
@@ -73,16 +72,5 @@
     "C:\\Users\\35191\\.nuget\\packages\\system.threading.threadpool\\4.3.0\\system.threading.threadpool.4.3.0.nupkg.sha512",
     "C:\\Users\\35191\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'InputSimulator 1.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
-      "libraryId": "InputSimulator",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

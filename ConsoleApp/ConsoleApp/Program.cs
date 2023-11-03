@@ -9,6 +9,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 class Program
 {
@@ -17,6 +19,7 @@ class Program
         string host = "127.0.0.1"; // Replace with your actual host
         string path = "/IM/USER1/APP"; // Replace with your WebSocket path
 
+        // Receive Messages from rasa 
         using (ClientWebSocket client = new ClientWebSocket())
         {
             Uri uri = new Uri("wss://" + host + ":8005" + path);
@@ -28,7 +31,7 @@ class Program
                 Console.WriteLine("Connected to the WebSocket server.");
 
                 // Handle messages and other logic here
-                await ReceiveMessages(client);
+                await ProcessMessages(client);
 
                 // Close the WebSocket when done
                 await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Connection closed", CancellationToken.None);
@@ -40,7 +43,7 @@ class Program
         }
     }
 
-    static async Task ReceiveMessages(ClientWebSocket client)
+    static async Task ProcessMessages(ClientWebSocket client)
     {
         byte[] buffer = new byte[1024];
 
@@ -88,7 +91,33 @@ class Program
                             // Click the "Accept Cookies" button
                             acceptCookiesButton.Click();
 
-                            gameOpen = true;
+                            string currentURL = driver.Url.ToString();
+                            if (currentURL == "https://shellshock.io/")
+                            {
+                                gameOpen = true;
+
+                                Uri serverUri = new Uri("ws://127.0.0.1:8000/IM/USER1/APPSPEECH"); // Replace with your WebSocket server URL
+
+                                using (ClientWebSocket mmiClient = new ClientWebSocket())
+                                {
+                                    await mmiClient.ConnectAsync(serverUri, CancellationToken.None);
+
+                                    // The message you want to send
+                                    string text = "Jogo Aberto";
+
+                                    string speak = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.w3.org/2001/10/synthesis http://www.w3.org/TR/speech-synthesis/synthesis.xsd\" xml:lang=\"pt-PT\"><p>"+text+"</p></speak>";
+                                    //var result = speak;
+                                    //mmiCli_1.sendToIM(new LifeCycleEvent("APPSPEECH", "IM", "text-1", "ctx-1").
+                                    //    doStartRequest(new EMMA("text-", "text", "command", 1, 0).fk
+                                    //      setValue(JSON.stringify(result))));
+
+                                    // Convert the message to bytes
+                                    byte[] messageBytes = Encoding.UTF8.GetBytes(speak);
+
+                                    // Send the message
+                                    await mmiClient.SendAsync(new ArraySegment<byte>(messageBytes), WebSocketMessageType.Text, true, CancellationToken.None);
+                                }
+                            }
                         }
 
                         if (intent == "close_game")
