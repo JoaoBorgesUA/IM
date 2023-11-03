@@ -44,10 +44,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "InputSimulator": {
-              "target": "Package",
-              "version": "[1.0.4, )"
-            },
             "Microsoft.NETCore.Platforms": {
               "target": "Package",
               "version": "[6.0.2, )"

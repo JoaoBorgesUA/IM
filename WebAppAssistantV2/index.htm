@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    
+
     <style>
       body {
         --indicator-color: black;
@@ -53,6 +53,11 @@
    <!-- <p>Click the button below and start speaking.</p>
     <button id="start-btn">Start</button>
     -->
+
+
+
+
+    
 
     <div class="bottomNav">
       <div id="response" class=""  style="">d</div>
@@ -100,6 +105,8 @@
         </div>
     </div>
 
+  
+
     <div id="energy"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@latest/dist/svg.min.js"></script>
@@ -116,297 +123,289 @@
     <script type="text/javascript" src="kws__/edge-impulse-standalone.js"></script>
     <script type="text/javascript" src="kws__/run-impulse.js"></script>
 
-    <script type="module">
+<script type="module">
 
-        var isOnKWS = false;
-        const sensor = new MicrophoneSensor();
-        let classifyCache = {};
-        let allData = [];
-        let allClassifications = [];
-        let casa_vivaStarted = null;
+var isOnKWS=false;
+const sensor = new MicrophoneSensor();
+  let classifyCache = {};
+  let allData = [];
+  let allClassifications = [];
+  let casa_vivaStarted = null;
 
-        async function startkws() {
-            classifyCache = {};
-            allData = [];
-            allClassifications = [];
-            casa_vivaStarted = null;
+async function startkws(){
+  classifyCache = {};
+  allData = [];
+  allClassifications = [];
+  casa_vivaStarted = null;
 
-            isOnKWS = false;
-            //await sensor.takeSample(200, 16000, () => {});
-            sensor.takeSample(1000, 16000, () => { }).then(onSampleComplete);
+  isOnKWS=false;
+  //await sensor.takeSample(200, 16000, () => {});
+  sensor.takeSample(1000, 16000, () => {}).then(onSampleComplete);
+}
+
+setTimeout(function(){
+  classifyCache = {};
+  allData = [];
+  allClassifications = [];
+  casa_vivaStarted = null;
+}, 60*60*1000);
+
+const onSampleComplete = (obj) => {
+    if(!isOnKWS)
+    sensor.takeSample(500, 16000, () => {}).then(onSampleComplete);
+
+    allData = allData.concat(obj.values);
+    //console.log(Date.now(), 'allData is', allData.length / 16000, 'seconds');
+
+    const windowSize = 3 * 16000;
+    const windowStep = 0.5 * 16000;
+    const classifyWindowLength = 0.5 * 16000;
+    const classifyWindowOverlap = 0.25 * 16000;
+
+    // if we have at least one window of data...
+    if (allData.length >= windowSize) {
+      let window = allData.slice(allData.length - windowSize, allData.length);
+
+      let noiseCount = 0;
+      let casa_vivaCount = 0;
+      let uncertainCount = 0;
+
+      // in here we'll take 1 second slices, with 300 ms. overlap that we then classify (total 14 windows)
+      console.time('classifyWindow');
+      for (let wx = 0; wx <= windowSize - classifyWindowLength; wx += classifyWindowOverlap) {
+        const cacheKey = allData.length - windowSize + wx;
+
+        let classifyResult;
+        if (!classifyCache[cacheKey]) {
+            let slice = window.slice(wx, wx + classifyWindowLength);
+
+            classifyCache[cacheKey] = classifier.classify(slice, false);
         }
 
-        setTimeout(function () {
-            classifyCache = {};
-            allData = [];
-            allClassifications = [];
-            casa_vivaStarted = null;
-        }, 60 * 60 * 1000);
+        classifyResult = classifyCache[cacheKey];
+        let noise = classifyResult.results.find(r => r.label === 'noise').value;
+        let casa_viva = classifyResult.results.find(r => r.label === 'casa_viva').value;
 
-
-        // Handle MICROPHONE
-        const onSampleComplete = (obj) => {
-            if (!isOnKWS)
-                sensor.takeSample(500, 16000, () => { }).then(onSampleComplete);
-
-            allData = allData.concat(obj.values);
-            //console.log(Date.now(), 'allData is', allData.length / 16000, 'seconds');
-
-            const windowSize = 3 * 16000;
-            const windowStep = 0.5 * 16000;
-            const classifyWindowLength = 0.5 * 16000;
-            const classifyWindowOverlap = 0.25 * 16000;
-
-            // if we have at least one window of data...
-            if (allData.length >= windowSize) {
-                let window = allData.slice(allData.length - windowSize, allData.length);
-
-                let noiseCount = 0;
-                //let casa_vivaCount = 0;
-                let uncertainCount = 0;
-
-                for (let wx = 0; wx <= windowSize - classifyWindowLength; wx += classifyWindowOverlap) {
-                    const cacheKey = allData.length - windowSize + wx;
-
-                    let classifyResult;
-                    if (!classifyCache[cacheKey]) {
-                        let slice = window.slice(wx, wx + classifyWindowLength);
-
-                        classifyCache[cacheKey] = classifier.classify(slice, false);
-                    }
-
-                    classifyResult = classifyCache[cacheKey];
-                    let noise = classifyResult.results.find(r => r.label === 'noise').value;
-                    //let casa_viva = classifyResult.results.find(r => r.label === 'casa_viva').value;
-
-                    // without any dependency to speak
-                    if (noise >= 0.2) {
-                        noiseCount++;
-                    }
-                    else if (!isOnKWS) {
-                            recognition.start();
-                            circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
-                            transcriptDiv.textContent = "...";
-                            isOnKWS = true;
-                    }
-                    else {
-                        uncertainCount++;
-                    }
-
-                    // TIRAR se concordares
-                    //if (casa_viva > .3)
-                    //    console.log(casa_viva);
-                    //if (noise >= 0.5) {
-                    //    noiseCount++;
-                    //}
-                    //else if (casa_viva >= 0.6) {
-                    //    casa_vivaCount++;
-
-                    //    if (!isOnKWS) {
-                    //        recognition.start();
-                    //        circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
-                    //        transcriptDiv.textContent = "...";
-                    //        isOnKWS = true;
-                    //    }
-                    //}
-                    //else {
-                    //    uncertainCount++;
-                    //}
-                }
-            }
-            //console.timeEnd('classifyWindow');
-        };
-
-        async function InitializeKWS() {
-            const classifier = window.classifier = new EdgeImpulseClassifier();
-            await classifier.init();
-            await sensor.init();
-            if (!sensor.hasSensor()) {
-                alert('Your device does not seem to have a microphone');
-            }
-            // start up the sensor
-            //await sensor.takeSample(200, 16000, () => {});
-
-            // then take 1s of data
-            sensor.takeSample(500, 16000, () => { }).then(onSampleComplete);
-        };
-        InitializeKWS();
-
-
-        import { interpolateGreens } from "https://cdn.skypack.dev/d3-scale-chromatic@3"
-
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        const recognition = new SpeechRecognition();
-        recognition.continuous = false;
-        recognition.interimResults = true;
-        recognition.lang = 'pt-PT';
-
-
-        var circle = SVG.find('.st0');//.fill('#ccc');
-        const startBtn = document.getElementById('start-btn');
-        const transcriptDiv = document.getElementById('transcript');
-        const energyDiv = document.getElementById('energy');
-
-        var firstSent = "Diga 'Casa Viva' para comecar a falar.";
-        transcriptDiv.textContent = firstSent;
-        var resetfunc;
-
-
-        recognition.onerror = function (event) {
-            console.error("REC ERROR" + event.error);
-            transcriptDiv.innerHTML = firstSent;
-            circle.animate(20, 0, 'now').attr({ fill: '#000' });
-            startkws();
-        };
-
-        recognition.onresult = function (event) {
-            speechActive = false;
-            var interim_transcript = '';
-            var final_transcript = '';
-
-            for (var i = event.resultIndex; i < event.results.length; ++i) {
-                if (event.results[i].isFinal) {
-                    //if(event.results[i][0].confidence>0.6)
-                    energyDiv.textContent += event.results[i][0].confidence;
-                    {
-                        final_transcript = "";
-                        final_transcript = event.results[i][0].transcript.trim();
-                        /*var sentence = event.results[i][0].transcript.trim().toLowerCase();
-                        if(sentence.startsWith("casa viva") || sentence.startsWith("viva") || sentence.startsWith("aviva") || sentence.startsWith("sa viva") || sentence.startsWith("da viva") ||sentence.startsWith("ora viva"))
-                        {
-                          var indSent = sentence.indexOf("viva");
-                          final_transcript= sentence.slice(indSent+5);
-                        }*/
-                    }
-
-                    if (final_transcript.length > 2) {
-                        final_transcript = final_transcript.charAt(0).toUpperCase() + final_transcript.slice(1);
-                        transcriptDiv.innerHTML = "<span style='color:#00b44e'><b>" + final_transcript + "</b></span>";
-
-                        sendMMI(final_transcript);
-                        circle.animate(20, 0, 'now').attr({ fill: '#000' });
-                        startkws();
-                    } else {
-                        transcriptDiv.innerHTML = "<span style='color:#ff9494'><b>Desculpe nao consegui ententer.</b></span>";
-                    }
-
-                    resetfunc = setTimeout(function () {
-                        transcriptDiv.innerHTML = firstSent;
-                    }, 3000);
-
-                    speechActive = false;
-                } else {
-                    //if(event.results[i][0].confidence>0.6)
-                    {
-                        console.log(event.results[i][0].transcript + " -- " + i);
-                        var sentence = event.results[i][0].transcript.trim().toLowerCase();
-                        /*if(sentence.startsWith("casa viva") || sentence.startsWith("viva") || sentence.startsWith("aviva") || sentence.startsWith("sa viva") || sentence.startsWith("da viva") ||sentence.startsWith("ora viva") ){
-                          var indSent = sentence.indexOf("viva");
-                          final_transcript= sentence.slice(indSent+5);
-                        }*/
-
-                    }
-                    transcriptDiv.textContent = event.results[i][0].transcript.trim().toLowerCase();
-                }
-            }
-        };
-
-
-        var vadActive = false;
-        var speechActive = false;
-
-        async function main() {
-            const myvad = await vad.MicVAD.new({
-
-                onSpeechEnd: (audio) => {
-                    // do something with `audio` (Float32Array of audio samples at sample rate 16000)...
-                    //transcriptDiv.textContent += "-";
-                    vadActive = false;
-                    setTimeout(function () {
-                        if (speechActive) recognition.stop();
-                        speechActive = false;
-                    }, 3000);
-                },
-                onSpeechStart: () => {
-                    //transcriptDiv.textContent += " ->";
-                    if (!speechActive) {
-                        speechActive = true;
-                        recognition.start();
-                        transcriptDiv.textContent = "...";
-                    }
-                    clearTimeout(resetfunc);
-                    vadActive = true;
-                },
-                onFrameProcessed: (probs) => {
-                    if (vadActive || speechActive) {
-                        const indicatorColor = interpolateGreens(probs.isSpeech / 1.5);
-                        //circle.fill(indicatorColor);
-                        circle.animate(20, 0, 'now').attr({ fill: indicatorColor });
-                    }
-                    //    energyDiv.textContent = probs.isSpeech + "--" + probs.notSpeech;
-                    //document.body.style.setProperty("--indicator-color", indicatorColor)
-                },
-            })
-            //myvad.start()
+if(casa_viva>.3)
+        console.log(casa_viva);
+        if (noise >= 0.6) {
+            noiseCount++;
         }
-        main()
+        else if (casa_viva >= 0.6) {
+            casa_vivaCount++; 
+            
+            if(!isOnKWS){
+              recognition.start();
+              circle.animate(20, 0, 'now').attr({ fill: '#00a431' });
+              transcriptDiv.textContent = "...";
+              isOnKWS=true;
+            }
+              
+        }
+        else {
+            uncertainCount++;
+        }
+      }
+    }
+    //console.timeEnd('classifyWindow');
+  };
 
-        if ('speechSynthesis' in window) {
-            console.log('Your browser <strong>supports</strong> speech synthesis.');
+async function InitializeKWS(){
+  const classifier = window.classifier = new EdgeImpulseClassifier();
+  await classifier.init();
+  await sensor.init();
+  if (!sensor.hasSensor()) {
+    alert('Your device does not seem to have a microphone');
+  }
+  // start up the sensor
+  //await sensor.takeSample(200, 16000, () => {});
+
+  // then take 1s of data
+  sensor.takeSample(500, 16000, () => {}).then(onSampleComplete);
+};
+//InitializeKWS();
+
+
+  import { interpolateGreens } from "https://cdn.skypack.dev/d3-scale-chromatic@3"
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.lang = 'pt-PT';
+
+
+  var circle = SVG.find('.st0');//.fill('#ccc');    
+  const startBtn = document.getElementById('start-btn');
+  const transcriptDiv = document.getElementById('transcript');
+  const energyDiv = document.getElementById('energy');
+
+  var firstSent = "Diga 'Casa Viva' para comecar a falar.";
+  transcriptDiv.textContent = firstSent;
+  var resetfunc ;
+
+
+  recognition.onerror = function(event) {
+    console.error("REC ERROR"+event.error);
+    transcriptDiv.innerHTML = firstSent;
+    circle.animate(20, 0, 'now').attr({ fill: '#000' });
+    //startkws();
+  };
+
+  recognition.onresult = function(event) {
+    speechActive=false;
+    var interim_transcript = '';
+    var final_transcript = '';
+
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        //if(event.results[i][0].confidence>0.6)
+        energyDiv.textContent += event.results[i][0].confidence;
+        {
+          final_transcript ="";
+          console.log("++"+event.results[i][0].transcript+"++");
+          final_transcript=event.results[i][0].transcript.trim();
+          /*var sentence = event.results[i][0].transcript.trim().toLowerCase();
+          if(sentence.startsWith("casa viva") || sentence.startsWith("viva") || sentence.startsWith("aviva") || sentence.startsWith("sa viva") || sentence.startsWith("da viva") ||sentence.startsWith("ora viva"))
+          {
+            var indSent = sentence.indexOf("viva");
+            final_transcript= sentence.slice(indSent+5);
+          }*/
         }
 
-        var ttsSpeaker;
-        window.speechSynthesis.onvoiceschanged = function (e) {
-            var voices = speechSynthesis.getVoices();
-            ttsSpeaker = voices[0];
-            for (let i = 0; i < voices.length; i++) {
-                if (voices[i].lang == "pt-PT") {
-                    console.log(voices[i]);
-                    if (voices[i].name.includes("Duarte")) ttsSpeaker = voices[i];
-                }
+        if(final_transcript.length>2){
+          final_transcript = final_transcript.charAt(0).toUpperCase()+ final_transcript.slice(1);
+          transcriptDiv.innerHTML = "<span style='color:#00b44e'><b>"+final_transcript+"</b></span>";
 
-
-            }
-
-            console.log(ttsSpeaker);
-        };
-
-        function speak(text) {
-
-            var msg = new SpeechSynthesisUtterance();
-            msg.text = text;
-
-            // Set the attributes.
-            msg.volume = parseFloat(1);
-            msg.rate = parseFloat(1.1);
-            msg.pitch = parseFloat(1);
-
-            msg.voice = ttsSpeaker;
-
-            window.speechSynthesis.speak(msg);
+          sendMMI(final_transcript);
+          circle.animate(20, 0, 'now').attr({ fill: '#000' });
+          //startkws();
+          
+        }else{
+          transcriptDiv.innerHTML = "<span style='color:#ff9494'><b>Desculpe nao consegui ententer.</b></span>";
         }
-        /////////////////////////////////////////
+
+        resetfunc = setTimeout(function(){
+          transcriptDiv.innerHTML = firstSent;
+          recognition.start();
+        }, 1000);
+
+        speechActive = false;
+      }else{
+        //if(event.results[i][0].confidence>0.6)
+        {
+          console.log(event.results[i][0].transcript + " -- " + i);
+          var sentence = event.results[i][0].transcript.trim().toLowerCase();
+          /*if(sentence.startsWith("casa viva") || sentence.startsWith("viva") || sentence.startsWith("aviva") || sentence.startsWith("sa viva") || sentence.startsWith("da viva") ||sentence.startsWith("ora viva") ){
+            var indSent = sentence.indexOf("viva");
+            final_transcript= sentence.slice(indSent+5);
+          }*/
+
+        }
+        transcriptDiv.textContent = event.results[i][0].transcript.trim().toLowerCase();
+      }
+    }
+  };
+
+  $(".mic").on('click', function(){
+    recognition.start();
+    console.log("start");
+  })
+  
+
+  var vadActive = false;
+  var speechActive = true;
+
+  async function main() {
+    const myvad = await vad.MicVAD.new({
+
+      onSpeechEnd: (audio) => {
+        // do something with `audio` (Float32Array of audio samples at sample rate 16000)...
+        //transcriptDiv.textContent += "-";
+        vadActive = false;
+        setTimeout(function(){
+          if(speechActive) recognition.stop();
+          speechActive=false;
+        }, 3000);
+      },
+      onSpeechStart: ()=>{
+        //transcriptDiv.textContent += " ->";
+        if(!speechActive){
+          speechActive=true;
+          recognition.start();
+          transcriptDiv.textContent = "...";
+        }
+        clearTimeout(resetfunc);
+        vadActive=true;
+      },
+      onFrameProcessed: (probs) => {
+        if(vadActive || speechActive){
+          const indicatorColor = interpolateGreens(probs.isSpeech / 1.5);
+          //circle.fill(indicatorColor);
+          circle.animate(20, 0, 'now').attr({ fill: indicatorColor });
+        } 
+        //    energyDiv.textContent = probs.isSpeech + "--" + probs.notSpeech;  
+        //document.body.style.setProperty("--indicator-color", indicatorColor)
+      },
+    })
+    //myvad.start()
+  }
+  //main()
+
+  if ('speechSynthesis' in window) {
+	  console.log('Your browser <strong>supports</strong> speech synthesis.');
+  }
+
+  var ttsSpeaker;
+  window.speechSynthesis.onvoiceschanged = function(e) {
+    var voices = speechSynthesis.getVoices();
+    ttsSpeaker = voices[0];
+    for (let i = 0; i < voices.length; i++) {
+      if(voices[i].lang=="pt-PT"){
+        console.log(voices[i]);
+        if(voices[i].name.includes("Duarte")) ttsSpeaker=voices[i];
+      }
+      
+
+    }
+
+    console.log(ttsSpeaker);
+  };
+  
+  function speak(text){
+
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+  
+    // Set the attributes.
+    msg.volume = parseFloat(1);
+    msg.rate = parseFloat(1.1);
+    msg.pitch = parseFloat(1);
+
+    msg.voice = ttsSpeaker;
+
+    window.speechSynthesis.speak(msg);
+  }
+  /////////////////////////////////////////
 
 
-        var mmiCli_1 = null;
-        mmiCli_1 = new MMIClient(null, mmi_fusion + "SPEECHIN");
+  var mmiCli_1 = null;
+  mmiCli_1 = new MMIClient(null, mmi_fusion + "SPEECHIN");
 
-        //É AQUI!!
-        // This function send a message to NLU (rasa) 
-        function sendMMI(final_transcript) {
+  function sendMMI(final_transcript){
 
-            var obj = new Object();
-            obj.text = final_transcript;
+    var obj = new Object();
+    obj.text = final_transcript;
+    $.post( "http://127.0.0.1:5005/model/parse", JSON.stringify(obj), function( data ) {
+    console.log(data);
 
-            $.post("http://localhost:5005/model/parse", JSON.stringify(obj), function (data) {
-
-                switch (data.intent.name)
+    switch (data.intent.name)
                 {
-                    case ('open_game'):
+                    case ('open_game'):     // Abrir website do jogo
                         var message = { 'intent': 'open_game' };
                         break;
 
-                    case ('close_game'):
+                    case ('close_game'):    // Fechar website do jogo
                         var message = { 'intent': 'close_game' };
                         break;
 
@@ -418,8 +417,21 @@
                         var message = { 'intent': 'close_tutorial_popup' };
                         break;
 
-                    case ('Forward'):
-                        var message = { 'intent': 'Forward' };
+                    case ('forward'):
+                        var message = { 'intent': 'forward' };
+                        break;
+
+                    case ("shoot"):
+                        var message = { 'intent': 'shoot' };
+                            break;
+                
+                    case ("jump"):
+                        var message = { 'intent': 'jump' };
+                                break;
+
+                    case ("move"):
+                        var direction = data.entities[0].value;
+                        var message = { 'intent': 'move', 'direction': direction}
                         break;
 
                     case ('affirm'):
@@ -455,117 +467,75 @@
                 mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
                          doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
                             setValue(JSON.stringify(result))));
+    
+  });
 
-                //if (data.intent.name == 'open_game') {
-                //    var message = { 'intent': 'open_game'}
-                //    var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
-                //    var result = { "recognized": ["SPEECH", "SPEECHIN", "APP"], "text": messaget, "nlu": message };
-                //    mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
-                //        doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
-                //            setValue(JSON.stringify(result))));
-                //}
-                //if (data.intent.name == 'open_site') {
-                //    var newTab = window.open("https://www.shellshock.io", "_blank");
-                //}
+  /*
+            */
+  }
+ // sendMMI("mudar para verde o circulo");
+  
 
-                //if (data.intent.name == 'affirm') {
+  var mmiCli_Out_add = "wss://"+host+":8005/IM/USER1/";
+  var mmiCli_Out = null;
+  mmiCli_Out = new MMIClientSocket(mmiCli_Out_add + "SPEECHOUT");
+  mmiCli_Out.onMessage.on(im1MessageHandler);
+  mmiCli_Out.onOpen.on(socketOpenHandler);
+	mmiCli_Out.openSocket();
 
-                //    // Select the "Play" button by its class name
-                //    var playButton = document.querySelector('.play-button');
-                //    console.log(playbutton)
-                //    // Check if the button is not disabled (enabled)
-                //    if (playButton && !playButton.hasAttribute('disabled')) {
-                //        // Trigger a click event on the button
-                //        playButton.click();
-                //    } else {
-                //        console.log("The 'Play' button is disabled.");
-                //    }
-                //}
 
-                //if (data.intent.name == 'change_color') {
-                //    var shape = '';
-                //    var color = '';
+  function socketOpenHandler(event) {
+    console.log("---------------openSocketHandler---------------")
 
-                //    for (let i = 0; i < data.entities.length; i++) {
-                //        if (data.entities[i].entity == 'shape')
-                //            shape = data.entities[i].value;
-                //        if (data.entities[i].entity == 'color')
-                //            color = data.entities[i].value;
-                //    }
+    if(mmiCli_Out.socket.readyState !== WebSocket.OPEN)
+    {
+        return;
+    }
+  }
 
-                //    var message = { 'intent': 'change_color', 'shape': shape, 'color': color }
-                //    var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
-                //    var result = { "recognized": ["SPEECH", "SPEECHIN", "APP"], "text": messaget, "nlu": message };
-                //    mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").
-                //        doExtensionNotification(new EMMA("text-", "text", "command", 1, 0).
-                //            setValue(JSON.stringify(result))));
-                //}
-            });
+  function im1MessageHandler(data) {
 
-            /*
+    console.log("--------------im1MessageHandler---------------");
 
-                      */
+    if(data != null && data!="RENEW" && data!="OK") {
+
+      console.log(data);
+
+      var content = $(data).find("emma\\:interpretation").first().text().trim();
+
+      if (typeof content == 'string') {
+        try {
+          // Try to parse XML
+          var xml = $.parseXML(content.replace(/\\"/g, "\"").slice(1,-1));
+
+          // Extract sentence
+          let text = $(xml).find("p").text();
+          //let text = Utf8.decode(atob(sentence.slice(2,-1)));
+
+          console.log(text);
+          speak(text);
+
+          $("#response").html(text);
+          $("#response").addClass("container");
+          $("#response").addClass("responseText");
+
+          setTimeout(function(){
+            $("#response").html("");
+            $("#response").removeClass("container");
+            $("#response").removeClass("responseText");
+          }, 3000);
+
         }
-        // sendMMI("mudar para azul o circulo");
+        catch (e) { console.log(e); }
+
+      }
+    }
+  }
+
+  /////////////////////////////////////////
 
 
-        var mmiCli_Out_add = "wss://" + host + ":8005/IM/USER1/";
-        var mmiCli_Out = null;
-        mmiCli_Out = new MMIClientSocket(mmiCli_Out_add + "SPEECHOUT");
-        mmiCli_Out.onMessage.on(im1MessageHandler);
-        mmiCli_Out.onOpen.on(socketOpenHandler);
-        mmiCli_Out.openSocket();
-
-
-        function socketOpenHandler(event) {
-            console.log("---------------openSocketHandler---------------")
-
-            if (mmiCli_Out.socket.readyState !== WebSocket.OPEN) {
-                return;
-            }
-        }
-
-        function im1MessageHandler(data) {
-
-            console.log("--------------im1MessageHandler---------------");
-
-            if (data != null && data != "RENEW" && data != "OK") {
-
-                console.log(data);
-
-                var content = $(data).find("emma\\:interpretation").first().text().trim();
-
-                if (typeof content == 'string') {
-                    try {
-                        // Try to parse XML
-                        var xml = $.parseXML(content.replace(/\\"/g, "\"").slice(1, -1));
-
-                        // Extract sentence
-                        let text = $(xml).find("p").text();
-                        //let text = Utf8.decode(atob(sentence.slice(2,-1)));
-
-                        console.log(text);
-                        speak(text);
-
-                        $("#response").html(text);
-                        $("#response").addClass("container");
-                        $("#response").addClass("responseText");
-
-                        setTimeout(function () {
-                            $("#response").html("");
-                            $("#response").removeClass("container");
-                            $("#response").removeClass("responseText");
-                        }, 3000);
-
-                    }
-                    catch (e) { console.log(e); }
-
-                }
-            }
-        }
-
-
- // sendMMI("Ligar as luzes")
+  //sendMMI("Ligar as luzes")
 </script> 
 
 

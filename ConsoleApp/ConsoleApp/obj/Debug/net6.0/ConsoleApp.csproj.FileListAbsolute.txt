@@ -38,4 +38,3 @@ C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\ob
 C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.pdb
 C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.genruntimeconfig.cache
 C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ref\ConsoleApp.dll
-C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\WindowsInput.dll

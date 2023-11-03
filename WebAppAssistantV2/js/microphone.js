@@ -95,7 +95,7 @@
                     // create the wav blob and pass it on to createDownloadLink
                     this._recorder.exportWAV(async (blob) => {
                         let buffer = await new Response(blob).arrayBuffer();
-                        //console.log('done recording', buffer.byteLength);
+                        console.log('done recording', buffer.byteLength);
                         let wavFileItems = new Int16Array(buffer, 44);
                         let eiData = [];
                         for (let w of wavFileItems) {

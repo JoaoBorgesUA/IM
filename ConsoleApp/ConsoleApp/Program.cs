@@ -9,6 +9,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 class Program
 {
@@ -17,6 +19,7 @@ class Program
         string host = "127.0.0.1"; // Replace with your actual host
         string path = "/IM/USER1/APP"; // Replace with your WebSocket path
 
+        // Receive Messages from rasa 
         using (ClientWebSocket client = new ClientWebSocket())
         {
             Uri uri = new Uri("wss://" + host + ":8005" + path);
@@ -28,7 +31,7 @@ class Program
                 Console.WriteLine("Connected to the WebSocket server.");
 
                 // Handle messages and other logic here
-                await ReceiveMessages(client);
+                await ProcessMessages(client);
 
                 // Close the WebSocket when done
                 await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Connection closed", CancellationToken.None);
@@ -40,14 +43,16 @@ class Program
         }
     }
 
-    static async Task ReceiveMessages(ClientWebSocket client)
+    static async Task ProcessMessages(ClientWebSocket client)
     {
         byte[] buffer = new byte[1024];
 
-        // Quero tirar os erros de ssl depois mas ainda n vi como
-
-        IWebDriver driver = new ChromeDriver(@"C:\Users\35191\Downloads\chromedriver-win64\chromedriver-win64");
+        //ChromeOptions options = new ChromeOptions();  
+        //options.AddArgument("--ignore-certificate-errors"); -- tirar erros ssl mas sem sucesso 
+        //IWebDriver driver = new ChromeDriver(@"C:\Users\35191\Downloads\chromedriver-win64\chromedriver-win64");
+        IWebDriver driver = new ChromeDriver();
         bool gameOpen = false;
+        bool gameStart = false;
 
         while (client.State == WebSocketState.Open)
         {
@@ -71,31 +76,48 @@ class Program
 
                     //Console.WriteLine(messageJSON["nlu"] == null ? "Sim" : "Nao");
 
-                    // Because of the runtime error
+                    // Only process the message if there is something in the nlu parameter 
+                    // To resolve the runtime error 
                     if (messageJSON["nlu"] != null)
                     {
                         string intent = (string)messageJSON["nlu"]["intent"];
 
                         if (intent == "open_game")
                         {
-                            //driver = new ChromeDriver(@"C:\Users\35191\Downloads\chromedriver-win64\chromedriver-win64");
                             driver.Navigate().GoToUrl("https://www.shellshock.io");   //Open a URL
 
-                            try
-                            {
-                                // Find the "Accept Cookies" button by its class name
-                                IWebElement acceptCookiesButton = driver.FindElement(By.ClassName("cmpboxbtn"));
+                            // Find the "Accept Cookies" button by its class name
+                            IWebElement acceptCookiesButton = driver.FindElement(By.ClassName("cmpboxbtn"));
+                            // Click the "Accept Cookies" button
+                            acceptCookiesButton.Click();
 
-                                // Click the "Accept Cookies" button
-                                acceptCookiesButton.Click();
-                            }
-                            catch (NoSuchElementException)
+                            string currentURL = driver.Url.ToString();
+                            if (currentURL == "https://shellshock.io/")
                             {
-                                // Handle the case where the "Accept Cookies" button is not found
-                                // You can log a message or take appropriate action
-                            }
+                                gameOpen = true;
 
-                            gameOpen = true;
+                                Uri serverUri = new Uri("ws://127.0.0.1:8000/IM/USER1/APPSPEECH"); // Replace with your WebSocket server URL
+
+                                using (ClientWebSocket mmiClient = new ClientWebSocket())
+                                {
+                                    await mmiClient.ConnectAsync(serverUri, CancellationToken.None);
+
+                                    // The message you want to send
+                                    string text = "Jogo Aberto";
+
+                                    string speak = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.w3.org/2001/10/synthesis http://www.w3.org/TR/speech-synthesis/synthesis.xsd\" xml:lang=\"pt-PT\"><p>"+text+"</p></speak>";
+                                    //var result = speak;
+                                    //mmiCli_1.sendToIM(new LifeCycleEvent("APPSPEECH", "IM", "text-1", "ctx-1").
+                                    //    doStartRequest(new EMMA("text-", "text", "command", 1, 0).fk
+                                    //      setValue(JSON.stringify(result))));
+
+                                    // Convert the message to bytes
+                                    byte[] messageBytes = Encoding.UTF8.GetBytes(speak);
+
+                                    // Send the message
+                                    await mmiClient.SendAsync(new ArraySegment<byte>(messageBytes), WebSocketMessageType.Text, true, CancellationToken.None);
+                                }
+                            }
                         }
 
                         if (intent == "close_game")
@@ -111,12 +133,14 @@ class Program
                             }
                         }
 
-                        if (intent == "start_game")
+                        if (intent == "start_game") // Ir para a arena do jogo
                         {
                             if (gameOpen)
                             {
                                 IWebElement playButton = driver.FindElement(By.ClassName("play-button"));
                                 playButton.Click();
+
+                                gameStart = true;
                             }
                             else
                             {
@@ -138,24 +162,54 @@ class Program
                             }
                         }
 
-                        // ver melhor aqui
-                        if (intent == "Forward")
+                        /*******    Teclas / Funcionalidades:
+                         *  W - Subir
+                         *  A - Mover para a esquerda 
+                         *  S - Mover para baixo
+                         *  D - Mover para a direira
+                         *  Q - Granada 
+                         *  E - Trocar arma
+                         *  R - Recarregar
+                         *  F - Corpo a Corpo
+                         *  SHIFT - Mirar 
+                         *  SPACEBAR - Pular 
+                         *  CLICK - Disparar 
+                         */
+
+                        if (intent == "forward")    // Tecla 'w' - Subir/Andar pra frente
                         {
-                            //Actions action = new Actions(driver);
-                           
-                            // Send the 'W' key to move the character forward
-                            //while (true)
-                            //{
-                            //    action.SendKeys(OpenQA.Selenium.Keys.Control + "W").Build().Perform();
-                            //}
+                            if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
+                            {
+                                //Actions action = new Actions(driver);
+
+                                // Send the 'W' key to move the character forward
+                                //while (true)
+                                //{
+                                //    action.SendKeys(OpenQA.Selenium.Keys.Control + "W").Build().Perform();
+                                //}
+                            }
                         }
 
                         //action.SendKeys(OpenQA.Selenium.Keys.Escape).Build().Perform(); // sair da tela total
 
-                        if (intent == "shoot")  // ainda n esta no intent mas funciona assim
+                        if (intent == "jump")
                         {
-                            IWebElement game_canvas = driver.FindElement(By.Id("canvas"));
-                            game_canvas.Click();
+                            if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
+                            {
+                                Actions action = new Actions(driver);
+                                action.SendKeys(OpenQA.Selenium.Keys.Escape).Build().Perform();
+
+                                // element.SendKeys(Keys.Control + "a");
+                            }
+                        }
+
+                        if (intent == "shoot")  
+                        {
+                            if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
+                            {
+                                IWebElement game_canvas = driver.FindElement(By.Id("canvas"));
+                                game_canvas.Click();
+                            }
                         }
                     }
                 }

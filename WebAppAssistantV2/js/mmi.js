@@ -174,7 +174,6 @@ var MMIClientSocket = (function () {
         this.onOpen = new LiteEvent();
         this.onMessage = new LiteEvent();
         this.address = address;
-        console.log(address)
         this.socket = null;
     }
     Object.defineProperty(MMIClientSocket.prototype, "OnOpen", {
@@ -197,7 +196,6 @@ var MMIClientSocket = (function () {
     };
     MMIClientSocket.prototype.openSocket = function () {
         this.socket = new WebSocket(this.address);
-
         var cli = this;
         this.socket.onmessage = function (event) {
             cli.onMessage.trigger(event.data);
