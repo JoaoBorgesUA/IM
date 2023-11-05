@@ -47,10 +47,10 @@ class Program
     {
         byte[] buffer = new byte[1024];
 
-        //ChromeOptions options = new ChromeOptions();  
-        //options.AddArgument("--ignore-certificate-errors"); -- tirar erros ssl mas sem sucesso 
-        //IWebDriver driver = new ChromeDriver(@"C:\Users\35191\Downloads\chromedriver-win64\chromedriver-win64");
-        IWebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.AddArgument("--ignore-certificate-errors");
+        IWebDriver driver = new ChromeDriver(@"chromedriver.exe");
+        //IWebDriver driver = new ChromeDriver();
         bool gameOpen = false;
         bool gameStart = false;
 
