@@ -1,0 +1,120 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - Oi Assistente
+    - Bom dia, Assistente
+    - Boa tarde, Assistente
+    - Boa noite, Assistente
+    - Olá Assistente
+    - Olá assistente
+    - olá
+    - olá assistente
+    - olá assistnete
+    
+- intent: goodbye
+  examples: |
+    - Xau, Assistente
+    - Adeus, Assistente
+    - Até logo, Assistente
+    - Boa noite, Assistente
+    - Até amanhã, Assistente
+
+- intent: affirm
+  examples: |
+    - Sim
+    - Claro
+    - Parece-me bem
+    - Correto
+    - Okay
+    - Ok
+    - sim
+
+- intent: deny
+  examples: |
+    - Não
+    - Nope
+    - Nunca
+    - Acho que não
+    - Não gosto assim
+    - Nem por isso
+
+- intent: light_switch
+  examples: |
+    - [Liga](switch) a luz da [sala](place), por favor
+    - Podes [ligar](switch) a luz da [cozinha](place)?
+    - Podes [desligar](switch) a luz do [quarto](place)?
+    - [Acende-me](switch) a luz da [entrada](place)
+    - [Apaga](switch) a luz do espelho(place)
+    - Podes [acender](switch) a luz da [casa de banho](place)?
+    - Podes [apagar](switch) a luz da [dispensa](place)?
+    - Podes [desligar](switch) a luz do [quarto e da casa de banho](place)?
+    - [Liga](switch) a luz da [sala](place)
+    - [Liga](switch) a luz do [quarto](place)
+    - [Desliga](switch) a luz do [quarto](place)
+
+- intent: change_color
+  examples: |
+    - Mudar a cor do [quadrado](shape) para  [verde](color)
+    - Mudar o [retangulo](shape) para  [vermelho](color)
+    - Alterar a cor do [circulo](shape) para  [amarelo](color)
+    - Mudar a cor do [quadrado](shape) para  [azul](color)
+    - Alterar o [circulo](shape) para  [verde](color)
+    - Mudar a cor do [triangulo](shape) para  [vermelho](color)
+    - Por o [circulo](shape) em  [amarelo](color)
+    - Mudar para [azul](color) o [triangulo](shape) 
+    - Alterar para [amarelo](color) o [quadrado](shape)
+    - Alterar o [circulo](shape) para  [castanho](color)
+    - Mudar o [quadrado](shape) para  [cinzento](color)
+    - Alterar o [triangulo](shape) para  [laranja](color)
+    - Por a cor do [circulo](shape) em  [rosa](color)
+    - Mudar a cor do [triangulo](shape) para  [preto](color)
+    - Por o [circulo](shape) em  [branco](color)
+    - Mudar para [azul](color) o [circulo](shape) 
+
+- intent: open_elearning
+  examples: |
+    - Entrar no portal 
+    - Entrar no portal da ua
+    - Abrir portal 
+    - Abrir portal da ua
+    - Abrir portal da universidade de aveiro 
+    - Ir ao portal da univerisdade 
+
+- intent: close_elearning
+  examples: |
+    - Sair do portal
+    - Sair do portal da ua
+    - Fechar portal 
+    - Fechar portal da universidade 
+
+- intent: authenticate
+  examples: | 
+    - Log in por favor 
+    - Efetuar Log in por favor 
+    - Quero-me autenticar
+    - Quero-me autenticar por favor 
+    - Entrar no servico de autenticacao
+    - Fazer autenticacao na conta
+    - Pretendo fazer a auntenticacao na conta por favor 
+
+- intent: insert_data_authn
+  examples: |
+    - Aluno [98678](studentnmec)
+    - Inserir dados de autenticacao do aluno [98678](studentnmec)
+    - Dados do aluno [98678](studentnmec)
+    - Autenticar aluno [98678](studentnmec)
+    - Aluno [99999](studentnmec)
+    - Inserir dados de autenticacao do aluno [99999](studentnmec)
+    - Dados do aluno [99999](studentnmec)
+    - Autenticar aluno [99999](studentnmec)
+
+- intent: see_notifications
+  examples: |
+    - Quero ver as minhas notificacoes por favor 
+    - Ver notificações
+    - Mostra me as notificações por favot 
+    - Notificações 
+
+
+  

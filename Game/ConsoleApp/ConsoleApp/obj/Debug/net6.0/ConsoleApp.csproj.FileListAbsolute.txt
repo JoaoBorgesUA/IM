@@ -1,0 +1,66 @@
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.exe
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.deps.json
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.runtimeconfig.json
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.dll
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.pdb
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.dll
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\refint\ConsoleApp.dll
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.pdb
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\João Borges\Downloads\DemoMMI\ConsoleApp\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ref\ConsoleApp.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\selenium-manager\linux\selenium-manager
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\selenium-manager\macos\selenium-manager
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\selenium-manager\windows\selenium-manager.exe
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.exe
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.deps.json
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.runtimeconfig.json
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.pdb
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\WebDriver.Support.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\WebDriver.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.AssemblyReference.cache
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.CopyComplete
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\refint\ConsoleApp.dll
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.pdb
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\35191\Documents\UA\5_Ano\IM\Assignment2\Git\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ref\ConsoleApp.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\selenium-manager\linux\selenium-manager
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\selenium-manager\macos\selenium-manager
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\selenium-manager\windows\selenium-manager.exe
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.exe
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.deps.json
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.runtimeconfig.json
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\ConsoleApp.pdb
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\WebDriver.Support.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\WebDriver.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.AssemblyReference.cache
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.CopyComplete
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\refint\ConsoleApp.dll
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.pdb
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\João Borges\Downloads\IM\ConsoleApp\ConsoleApp\obj\Debug\net6.0\ref\ConsoleApp.dll
