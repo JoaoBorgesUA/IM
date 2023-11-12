@@ -170,7 +170,7 @@ class Program
                             {
                                 try
                                 {
-                                    IWebElement closePopup = driver.FindElement(By.ClassName("roundme_sm popup_close clickme"));
+                                    IWebElement closePopup = driver.FindElement(By.CssSelector("button[class='roundme_sm popup_close clickme']"));
                                     closePopup.Click();
                                 }
                                 catch(Exception ex)
