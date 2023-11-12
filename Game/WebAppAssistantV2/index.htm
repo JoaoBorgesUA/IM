@@ -230,7 +230,7 @@ async function InitializeKWS(){
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
-  recognition.continuous = false;
+  recognition.continuous = true;
   recognition.interimResults = true;
   recognition.lang = 'pt-PT';
 
@@ -240,7 +240,7 @@ async function InitializeKWS(){
   const transcriptDiv = document.getElementById('transcript');
   const energyDiv = document.getElementById('energy');
 
-  var firstSent = "Diga 'Casa Viva' para comecar a falar.";
+  var firstSent = "Carregue no Microfone para começar a falar";
   transcriptDiv.textContent = firstSent;
   var resetfunc ;
 

@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Game",
+    "\\Game\\WebAppAssistantV2"
   ],
+  "SelectedNode": "\\Game\\WebAppAssistantV2\\index.htm",
   "PreviewInSolutionExplorer": false
 }

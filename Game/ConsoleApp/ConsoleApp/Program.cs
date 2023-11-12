@@ -11,6 +11,8 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
+using WindowsInput;
+using WindowsInput.Native;
 
 class Program
 {
@@ -49,7 +51,10 @@ class Program
 
         ChromeOptions options = new ChromeOptions();
         options.AddArgument("--ignore-certificate-errors");
-        IWebDriver driver = new ChromeDriver(@"chromedriver.exe");
+        options.AddArgument("start-maximized");
+        options.AddArgument("disable-infobars");
+        options.AddArgument("--disable-extensions");
+        IWebDriver driver = new ChromeDriver(@"chromedriver.exe", options);
         //IWebDriver driver = new ChromeDriver();
         bool gameOpen = false;
         bool gameStart = false;
@@ -58,6 +63,7 @@ class Program
         {
             WebSocketReceiveResult result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
 
+            InputSimulator sim = new InputSimulator();
             if (result.MessageType == WebSocketMessageType.Text)
             {
                 string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
@@ -84,40 +90,47 @@ class Program
 
                         if (intent == "open_game")
                         {
+
                             driver.Navigate().GoToUrl("https://www.shellshock.io");   //Open a URL
 
-                            // Find the "Accept Cookies" button by its class name
-                            IWebElement acceptCookiesButton = driver.FindElement(By.ClassName("cmpboxbtn"));
-                            // Click the "Accept Cookies" button
-                            acceptCookiesButton.Click();
-
                             string currentURL = driver.Url.ToString();
-                            if (currentURL == "https://shellshock.io/")
-                            {
-                                gameOpen = true;
+                            gameOpen = true;
+                            try {
+                                // Find the "Accept Cookies" button by its class name
+                                IWebElement acceptCookiesButton = driver.FindElement(By.ClassName("cmpboxbtn"));
+                                // Click the "Accept Cookies" button
+                                acceptCookiesButton.Click();
 
-                                Uri serverUri = new Uri("ws://127.0.0.1:8000/IM/USER1/APPSPEECH"); // Replace with your WebSocket server URL
-
-                                using (ClientWebSocket mmiClient = new ClientWebSocket())
-                                {
-                                    await mmiClient.ConnectAsync(serverUri, CancellationToken.None);
-
-                                    // The message you want to send
-                                    string text = "Jogo Aberto";
-
-                                    string speak = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.w3.org/2001/10/synthesis http://www.w3.org/TR/speech-synthesis/synthesis.xsd\" xml:lang=\"pt-PT\"><p>"+text+"</p></speak>";
-                                    //var result = speak;
-                                    //mmiCli_1.sendToIM(new LifeCycleEvent("APPSPEECH", "IM", "text-1", "ctx-1").
-                                    //    doStartRequest(new EMMA("text-", "text", "command", 1, 0).fk
-                                    //      setValue(JSON.stringify(result))));
-
-                                    // Convert the message to bytes
-                                    byte[] messageBytes = Encoding.UTF8.GetBytes(speak);
-
-                                    // Send the message
-                                    await mmiClient.SendAsync(new ArraySegment<byte>(messageBytes), WebSocketMessageType.Text, true, CancellationToken.None);
-                                }
                             }
+                            catch (Exception ex) {
+                                Console.WriteLine(ex.ToString());
+                            }
+                            //if (currentURL == "https://shellshock.io/")
+                            //{
+                            //    gameOpen = true;
+
+                            //    Uri serverUri = new Uri("ws://127.0.0.1:8000/IM/USER1/APPSPEECH"); // Replace with your WebSocket server URL
+
+                            //    using (ClientWebSocket mmiClient = new ClientWebSocket())
+                            //    {
+                            //        await mmiClient.ConnectAsync(serverUri, CancellationToken.None);
+
+                            //        // The message you want to send
+                            //        string text = "Jogo Aberto";
+
+                            //        string speak = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.w3.org/2001/10/synthesis http://www.w3.org/TR/speech-synthesis/synthesis.xsd\" xml:lang=\"pt-PT\"><p>"+text+"</p></speak>";
+                            //        //var result = speak;
+                            //        //mmiCli_1.sendToIM(new LifeCycleEvent("APPSPEECH", "IM", "text-1", "ctx-1").
+                            //        //    doStartRequest(new EMMA("text-", "text", "command", 1, 0).fk
+                            //        //      setValue(JSON.stringify(result))));
+
+                            //        // Convert the message to bytes
+                            //        byte[] messageBytes = Encoding.UTF8.GetBytes(speak);
+
+                            //        // Send the message
+                            //        await mmiClient.SendAsync(new ArraySegment<byte>(messageBytes), WebSocketMessageType.Text, true, CancellationToken.None);
+                            //    }
+                            //}
                         }
 
                         if (intent == "close_game")
@@ -137,14 +150,33 @@ class Program
                         {
                             if (gameOpen)
                             {
-                                IWebElement playButton = driver.FindElement(By.ClassName("play-button"));
-                                playButton.Click();
+                                try
+                                {
+                                    IWebElement playButton = driver.FindElement(By.ClassName("play-button"));
+                                    playButton.Click();
 
-                                gameStart = true;
+                                    gameStart = true;
+                                }
+                                catch (Exception ex) {
+                                    Console.WriteLine(ex.ToString());
+                                }
                             }
                             else
                             {
+                                continue;
                                 // fazer com q o sistema fale connosco a dizer que o jogo ainda nao esta aberto
+                            }
+                            if (gameStart)
+                            {
+                                try
+                                {
+                                    IWebElement closePopup = driver.FindElement(By.ClassName("roundme_sm popup_close clickme"));
+                                    closePopup.Click();
+                                }
+                                catch(Exception ex)
+                                {
+                                    Console.WriteLine(ex.ToString());
+                                }
                             }
                         }
 
@@ -153,7 +185,7 @@ class Program
                         {
                             if (gameOpen)
                             {
-                                IWebElement closePopup = driver.FindElement(By.ClassName("clickme"));
+                                IWebElement closePopup = driver.FindElement(By.ClassName("roundme_sm popup_close clickme"));
                                 closePopup.Click();
                             }
                             else
@@ -180,13 +212,16 @@ class Program
                         {
                             if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
                             {
-                                //Actions action = new Actions(driver);
-
-                                // Send the 'W' key to move the character forward
-                                //while (true)
-                                //{
-                                //    action.SendKeys(OpenQA.Selenium.Keys.Control + "W").Build().Perform();
-                                //}
+                                try
+                                {
+                                    sim.Keyboard.KeyDown(VirtualKeyCode.VK_W);
+                                    Thread.Sleep(1000);
+                                    sim.Keyboard.KeyUp(VirtualKeyCode.VK_W);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.ToString());
+                                }
                             }
                         }
 
@@ -194,21 +229,45 @@ class Program
 
                         if (intent == "jump")
                         {
-                            if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
-                            {
-                                Actions action = new Actions(driver);
-                                action.SendKeys(OpenQA.Selenium.Keys.Escape).Build().Perform();
-
-                                // element.SendKeys(Keys.Control + "a");
-                            }
+                            //if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
+                            //{
+                                try{
+                                sim.Keyboard.KeyDown(VirtualKeyCode.SPACE);
+                                Thread.Sleep(50);
+                                sim.Keyboard.KeyUp(VirtualKeyCode.SPACE);
+                                }
+                                catch (Exception ex){
+                                    Console.WriteLine(ex.ToString());
+                                }
+                            //}
                         }
 
                         if (intent == "shoot")  
                         {
+                            try
+                            {
+                                sim.Mouse.LeftButtonClick();
+                                sim.Mouse.MoveMouseBy(100, 0);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+
+                        if (intent == "look aside")    // Tecla 'w' - Subir/Andar pra frente
+                        {
                             if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
                             {
-                                IWebElement game_canvas = driver.FindElement(By.Id("canvas"));
-                                game_canvas.Click();
+                                try
+                                {
+                                    sim.Mouse.MoveMouseBy(100, 0);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.ToString());
+                                }
                             }
                         }
                     }

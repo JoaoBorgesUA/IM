@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {}
+    "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {
+    "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+        "projectUniqueName": "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
         "projectName": "ConsoleApp",
-        "projectPath": "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+        "projectPath": "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
         "packagesPath": "C:\\Users\\João Borges\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João Borges\\Downloads\\IM\\ConsoleApp\\ConsoleApp\\obj\\",
+        "outputPath": "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\João Borges\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,21 +40,25 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "InputSimulatorPlus": {
+              "target": "Package",
+              "version": "[1.0.7, )"
+            },
             "Microsoft.NETCore.Platforms": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[7.0.4, )"
             },
             "Selenium.Support": {
               "target": "Package",
-              "version": "[4.14.1, )"
+              "version": "[4.15.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
-              "version": "[4.14.1, )"
+              "version": "[4.15.0, )"
             },
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
-              "version": "[118.0.5993.7000, )"
+              "version": "[119.0.6045.10500, )"
             },
             "System.Net.WebSockets": {
               "target": "Package",
