@@ -423,8 +423,73 @@ async function InitializeKWS(){
           break;
 
         case ('see_notifications'): 
-          console.log("notificacoes") 
           var message = { 'intent': 'see_notifications' };
+          break;
+
+        case ('see_events'): 
+          var message = { 'intent': 'see_events' };
+          break;
+
+        case ('schedule_event'): 
+          var message = { 'intent': 'schedule_event' };
+          break;
+        
+        case ('name_date_newevent'):  // date new event 
+          var eventname = '';
+          var eventday = '';
+          var eventmonth = '';
+          var eventyear = '';
+
+           for (let i = 0; i < data.entities.length; i++) 
+           {
+            if (data.entities[i].entity == 'eventname')
+              eventname = data.entities[i].value;
+            if (data.entities[i].entity == 'eventday')
+              eventday = data.entities[i].value;
+            if (data.entities[i].entity == 'eventmonth')
+              eventmonth = data.entities[i].value;
+            if (data.entities[i].entity == 'eventyear')
+              eventyear = data.entities[i].value;
+          }
+
+          var message = { 'intent': 'name_date_newevent', 
+                          'eventname': eventname, 
+                          'eventday': eventday, 
+                          'eventmonth': eventmonth,   
+                          'eventmonth': eventmonth,   
+                          'eventyear': eventyear
+                        };
+
+          console.log(message)
+              
+          break;
+
+        case ('time_newevent'):
+          var eventhour = '';
+          var eventminutes = '';
+
+           for (let i = 0; i < data.entities.length; i++) 
+           {
+            if (data.entities[i].entity == 'eventhour')
+              eventhour = data.entities[i].value;
+            if (data.entities[i].entity == 'eventminutes')
+              eventminutes = data.entities[i].value;
+          }
+
+          var message = { 'intent': 'time_newevent', 
+                          'eventhour': eventhour, 
+                          'eventminutes': eventminutes, 
+                        };
+
+          console.log(message)
+          break;
+
+        case ('logout'): 
+          var message = { 'intent': 'logout' };
+          break;
+
+        case ('affirm'):
+          var message = { 'intent': 'affirm' };
           break;
 
         case ('change_color'):
