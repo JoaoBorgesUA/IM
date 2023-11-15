@@ -100,10 +100,12 @@ nlu:
 
 - intent: insert_data_authn
   examples: |
+    - Numero mecanografico [98678](studentnmec)
     - Aluno [98678](studentnmec)
     - Inserir dados de autenticacao do aluno [98678](studentnmec)
     - Dados do aluno [98678](studentnmec)
     - Autenticar aluno [98678](studentnmec)
+    - Numero mecanografico [98678](studentnmec)
     - Aluno [99999](studentnmec)
     - Inserir dados de autenticacao do aluno [99999](studentnmec)
     - Dados do aluno [99999](studentnmec)
@@ -113,8 +115,53 @@ nlu:
   examples: |
     - Quero ver as minhas notificacoes por favor 
     - Ver notificações
-    - Mostra me as notificações por favot 
+    - Mostra me as notificações por favor
     - Notificações 
+
+- intent: see_events
+  examples: |
+    - Ir para os eventos
+    - Quero ver os meus eventos por favor
+    - Quero ver os meus eventos
+    - Ver os eventos por favor
+    - Ver os meus eventos por favor
+    - Eventos
+    - Página dos eventos 
+
+- intent: schedule_event
+  examples: |
+    - Novo evento
+    - Marcar novo evento por favor 
+    - Marcar novo evento
+    - Quero um organizar um novo evento
+
+- intent: name_date_newevent
+  examples: |
+    - [teste](eventname) no dia [17](eventday) no mês [11](eventmonth) e ano [2023](eventyear)
+    - [entrega projeto](eventname) no dia [28](eventday) no mês [11](eventmonth) e ano [2023](eventyear) 
+    - [exame importante](eventname) no dia [25](eventday) no mês [11](eventmonth) e ano [2023](eventyear)
+    - [teste](eventname) no dia [17](eventday)  mês [11](eventmonth) e ano [2023](eventyear)
+    - [entrega projeto](eventname) no dia [28](eventday) mês [11](eventmonth) e ano [2023](eventyear) 
+    - [exame importante](eventname) no dia [25](eventday) mês [11](eventmonth) e ano [2023](eventyear)
+    
+- intent: time_newevent
+  examples: |
+    - Hora [10](eventhour) e minutos [30](eventminutes)
+    - Hora [14](eventhour) e minutos [30](eventminutes)
+    - As horas são [10](eventhour) e os minutos [30](eventminutes)
+    - Hora [10](eventhour) e minuto [5](eventminutes)
+    - Horario [10](eventhour) e [5](eventminutes) minutos 
+    
+
+- intent: logout
+  examples: |
+    - Sair da minha conta por favor
+    - Quero sair da conta
+    - Sair da conta
+    - Quero me desautenticar
+    - Abandonar conta
+
+  
 
 
   

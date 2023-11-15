@@ -2,6 +2,61 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Options/7.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Primitives": "7.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/6.0.2": {
         "type": "package",
         "compile": {
@@ -239,10 +294,10 @@
           }
         }
       },
-      "Selenium.Support/4.14.1": {
+      "Selenium.Support/4.15.0": {
         "type": "package",
         "dependencies": {
-          "Selenium.WebDriver": "4.14.1"
+          "Selenium.WebDriver": "4.15.0"
         },
         "compile": {
           "lib/netstandard2.0/WebDriver.Support.dll": {
@@ -255,7 +310,7 @@
           }
         }
       },
-      "Selenium.WebDriver/4.14.1": {
+      "Selenium.WebDriver/4.15.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
@@ -731,6 +786,22 @@
           }
         }
       },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
       "System.Runtime.Extensions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1163,6 +1234,91 @@
     }
   },
   "libraries": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions/7.0.0": {
+      "sha512": "h3j/QfmFN4S0w4C2A6X7arXij/M/OVw3uQHSOFxnND4DyAzO1F9eMX7Eti7lU/OkSthEE0WzRsfT/Dmx86jzCw==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Options/7.0.1": {
+      "sha512": "pZRDYdN1FpepOIfHU62QoBQ6zdAoTvnjxFfqAzEd9Jhb2dfhA5i6jeTdgGgcgTWFRC7oT0+3XrbQu4LjvgX1Nw==",
+      "type": "package",
+      "path": "microsoft.extensions.options/7.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Options.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Options.targets",
+        "lib/net462/Microsoft.Extensions.Options.dll",
+        "lib/net462/Microsoft.Extensions.Options.xml",
+        "lib/net6.0/Microsoft.Extensions.Options.dll",
+        "lib/net6.0/Microsoft.Extensions.Options.xml",
+        "lib/net7.0/Microsoft.Extensions.Options.dll",
+        "lib/net7.0/Microsoft.Extensions.Options.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Options.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Options.xml",
+        "microsoft.extensions.options.7.0.1.nupkg.sha512",
+        "microsoft.extensions.options.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/7.0.0": {
+      "sha512": "um1KU5kxcRp3CNuI8o/GrZtD4AIOXDk+RLsytjZ9QPok3ttLUelLKpilVPuaFT3TFjOhSibUAso0odbOaCDj3Q==",
+      "type": "package",
+      "path": "microsoft.extensions.primitives/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Primitives.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Primitives.targets",
+        "lib/net462/Microsoft.Extensions.Primitives.dll",
+        "lib/net462/Microsoft.Extensions.Primitives.xml",
+        "lib/net6.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net6.0/Microsoft.Extensions.Primitives.xml",
+        "lib/net7.0/Microsoft.Extensions.Primitives.dll",
+        "lib/net7.0/Microsoft.Extensions.Primitives.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
+        "microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "Microsoft.NETCore.Platforms/6.0.2": {
       "sha512": "9gV25FPPW5Tz20D+mpfCCtUsfnpMHc20TjV8OV8+FQj/nKNDC5ceIKl3nFCRzjRmuiCBULRHuRUiV1JqbYtLpw==",
       "type": "package",
@@ -1515,36 +1671,37 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "Selenium.Support/4.14.1": {
-      "sha512": "Jcky37lsMgJtraG7C9/X2twXQsv/620fvfZFfoXrz9IoNv/d5c92oALjAxdqdErqeCZiSp2/evl4l0zjqPwiCA==",
+    "Selenium.Support/4.15.0": {
+      "sha512": "zqkSQYMS2JcAd+AKavADPoe/RyYjiklc/TRms/nzDH9Wo/OpYOqE7h9D8ggwXr4auErNvbAIqEGqIkAWElTkpg==",
       "type": "package",
-      "path": "selenium.support/4.14.1",
+      "path": "selenium.support/4.15.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "images/icon.png",
+        "icon.png",
         "lib/netstandard2.0/WebDriver.Support.dll",
         "lib/netstandard2.0/WebDriver.Support.xml",
-        "selenium.support.4.14.1.nupkg.sha512",
+        "selenium.support.4.15.0.nupkg.sha512",
         "selenium.support.nuspec"
       ]
     },
-    "Selenium.WebDriver/4.14.1": {
-      "sha512": "9gmtnYWDyscnVPdDZ1dMI8SikKLcrsS+GNweZVKMWxcUsagHOdQnX1yAA22KeTWbRubwp5Vw/E6NF/6drzaTbA==",
+    "Selenium.WebDriver/4.15.0": {
+      "sha512": "/uMlgsPdsmAAwOADxA4lzz777Xgbhm/SjmvizBpiRDyZtnAxDZ0uON5bpTN+De9F81xB/1z/S8jKN1P7ebYssw==",
       "type": "package",
-      "path": "selenium.webdriver/4.14.1",
+      "path": "selenium.webdriver/4.15.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "README.md",
         "build/Selenium.WebDriver.targets",
         "buildTransitive/Selenium.WebDriver.targets",
-        "images/icon.png",
+        "icon.png",
         "lib/netstandard2.0/WebDriver.dll",
         "lib/netstandard2.0/WebDriver.xml",
         "manager/linux/selenium-manager",
         "manager/macos/selenium-manager",
         "manager/windows/selenium-manager.exe",
-        "selenium.webdriver.4.14.1.nupkg.sha512",
+        "selenium.webdriver.4.15.0.nupkg.sha512",
         "selenium.webdriver.nuspec"
       ]
     },
@@ -2877,6 +3034,31 @@
         "system.runtime.nuspec"
       ]
     },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Runtime.Extensions/4.3.0": {
       "sha512": "guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
       "type": "package",
@@ -3889,9 +4071,10 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Microsoft.Extensions.Options >= 7.0.1",
       "Microsoft.NETCore.Platforms >= 6.0.2",
-      "Selenium.Support >= 4.14.1",
-      "Selenium.WebDriver >= 4.14.1",
+      "Selenium.Support >= 4.15.0",
+      "Selenium.WebDriver >= 4.15.0",
       "Selenium.WebDriver.ChromeDriver >= 119.0.6045.10500",
       "System.Net.WebSockets >= 4.3.0",
       "System.Net.WebSockets.Client >= 4.3.2"
@@ -3941,17 +4124,21 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Microsoft.Extensions.Options": {
+            "target": "Package",
+            "version": "[7.0.1, )"
+          },
           "Microsoft.NETCore.Platforms": {
             "target": "Package",
             "version": "[6.0.2, )"
           },
           "Selenium.Support": {
             "target": "Package",
-            "version": "[4.14.1, )"
+            "version": "[4.15.0, )"
           },
           "Selenium.WebDriver": {
             "target": "Package",
-            "version": "[4.14.1, )"
+            "version": "[4.15.0, )"
           },
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",

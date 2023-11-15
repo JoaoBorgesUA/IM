@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-color",
+      "2": "I-color",
+      "3": "L-color",
+      "4": "U-color",
+      "5": "B-place",
+      "6": "I-place",
+      "7": "L-place",
+      "8": "U-place",
+      "9": "B-shape",
+      "10": "I-shape",
+      "11": "L-shape",
+      "12": "U-shape",
+      "13": "B-studentnmec",
+      "14": "I-studentnmec",
+      "15": "L-studentnmec",
+      "16": "U-studentnmec",
+      "17": "B-switch",
+      "18": "I-switch",
+      "19": "L-switch",
+      "20": "U-switch",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-color": 1,
+      "I-color": 2,
+      "L-color": 3,
+      "U-color": 4,
+      "B-place": 5,
+      "I-place": 6,
+      "L-place": 7,
+      "U-place": 8,
+      "B-shape": 9,
+      "I-shape": 10,
+      "L-shape": 11,
+      "U-shape": 12,
+      "B-studentnmec": 13,
+      "I-studentnmec": 14,
+      "L-studentnmec": 15,
+      "U-studentnmec": 16,
+      "B-switch": 17,
+      "I-switch": 18,
+      "L-switch": 19,
+      "U-switch": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

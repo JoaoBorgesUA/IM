@@ -44,17 +44,21 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
             "Microsoft.NETCore.Platforms": {
               "target": "Package",
               "version": "[6.0.2, )"
             },
             "Selenium.Support": {
               "target": "Package",
-              "version": "[4.14.1, )"
+              "version": "[4.15.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
-              "version": "[4.14.1, )"
+              "version": "[4.15.0, )"
             },
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",

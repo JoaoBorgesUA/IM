@@ -11,12 +11,23 @@ intents:
 - authenticate
 - insert_data_authn
 - see_notifications
+- see_events
+- schedule_event
+- name_date_newevent
+- time_newevent
+- logout
 entities:
 - place
 - switch
 - shape
 - color
 - studentnmec
+- eventname
+- eventday
+- eventmonth
+- eventyear
+- eventhour 
+- eventminutes
 slots:
   switch:
     type: text
@@ -48,6 +59,42 @@ slots:
     mappings:
     - type: from_entity
       entity: studentnmec
+  eventname:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: eventname
+  eventday:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: eventday
+  eventmonth:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: eventmonth
+  eventyear:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: eventyear
+  eventhour:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: eventhour
+  eventminutes:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: eventminutes
 responses:
   utter_greet:
   - text: Olá, como posso ajudar? Pode perguntar caso não saiba as funcionalidades disponíveis.
