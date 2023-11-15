@@ -143,15 +143,73 @@ nlu:
     - Deslocar para a [frente] (direction)
     - Deslocar para [tras] (direction)
 
+- intent: look
+  examples: |
+    - Olhar para a [direita] (direction)
+    - Olhar para a [esquerda] (direction)
+    - Olhar para [cima] (direction)
+    - Olhar para [baixo] (direction)
+    - Olha para a [direita] (direction)
+    - Olha para [esquerda] (direction)
+    - Olha para [cima] (direction)
+    - Olha para [baixo] (direction)
+    - Virar para a [direita] (direction)
+    - Virar para a [esquerda] (direction)
+    - Virar para a [cima] (direction)
+    - Virar para [baixo] (direction)
+
 - intent: shoot
   examples: |
     - Disparar 
     - Atirar fogo
+    - Dispara
+    - Dispara [muito](amount)
+    - Dispara [pouco](amount)
+    - Neutraliza
 
 - intent: jump
   examples: |
     - Saltar
     - Pular
+    - Olha o muro
 
+- intent: change_weapon
+  examples: |
+    - Muda a arma
+    - Muda para a pistola
+    - Muda para a metralhadora
+    - Muda para outra arma
+    - Troca
+    - Muda
+    - Troca de arma
+    - Ovinho sabes que horas são 
+
+
+- intent: reload
+  examples: |
+    - Recarrega a arma
+    - Recarrega
+    - Dá reload
+
+- intent: melee
+  examples: |
+    - Tira a faca
+    - Tira a batedeira
+    - Saca da naifa
+
+- intent: grenade
+  examples: |
+    - Atira uma granada [alto](distance)
+    - Atira uma granada [baixo](distance)
+    - Atira uma granada para [perto](distance)
+    - Atira uma granada para [longe](distance)
+    - Granada
+
+- intent: aim
+  examples: |
+    - Aponta
+    - Usa a mira
+    - Aponta com a mira
+    - Com calma
 
   

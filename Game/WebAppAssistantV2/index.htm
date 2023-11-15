@@ -423,16 +423,44 @@ async function InitializeKWS(){
 
                     case ("shoot"):
                         var message = { 'intent': 'shoot' };
-                            break;
+                        break;
                 
                     case ("jump"):
                         var message = { 'intent': 'jump' };
-                                break;
+                        break;
 
                     case ("move"):
                         var direction = data.entities[0].value;
                         var message = { 'intent': 'move', 'direction': direction}
                         break;
+
+                    case ("look"):
+                        var direction = data.entities[0].value;
+                        var message = { 'intent': 'look', 'direction': direction }
+                        break;
+
+                    case ("shoot"):
+                        var direction = data.entities[0].value;
+                        var message = { 'intent': 'shoot', 'amount': amount }
+                        break;
+
+                    case ("grenade"):
+                        var direction = data.entities[0].value;
+                        var message = { 'intent': 'grenade', 'distance': distance }
+                        break;
+
+                    case ('reload'):
+                        var message = { 'intent': 'reload' };
+                        break;
+
+                    case ('melee'):
+                        var message = { 'intent': 'melee' };
+                        break;
+
+                    case ('aim'):
+                        var message = { 'intent': 'aim' };
+                        break;
+
 
                     case ('affirm'):
                         // Select the "Play" button by its class name
