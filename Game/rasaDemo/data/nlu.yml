@@ -115,19 +115,6 @@ nlu:
     - Para agora
     - Encosta ai
 
-- intent: forward
-  examples: |
-    - Para a frente
-    - Vai para a frente
-    - Anda para a Frente
-    - Frente
-    - Anda
-    - Anda um pouco para a frente
-    - Começa a andar
-    - Começa a correr
-    - Corre
-    - Podes andar para a frente?
-
 - intent: move
   examples: |
     - Andar para a [direita] (direction)

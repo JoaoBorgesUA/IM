@@ -417,10 +417,6 @@ async function InitializeKWS(){
                         var message = { 'intent': 'close_tutorial_popup' };
                         break;
 
-                    case ('forward'):
-                        var message = { 'intent': 'forward' };
-                        break;
-
                     case ("shoot"):
                         var message = { 'intent': 'shoot' };
                         break;
@@ -440,12 +436,12 @@ async function InitializeKWS(){
                         break;
 
                     case ("shoot"):
-                        var direction = data.entities[0].value;
+                        var amount = data.entities[0].value;
                         var message = { 'intent': 'shoot', 'amount': amount }
                         break;
 
                     case ("grenade"):
-                        var direction = data.entities[0].value;
+                        var distance = data.entities[0].value;
                         var message = { 'intent': 'grenade', 'distance': distance }
                         break;
 

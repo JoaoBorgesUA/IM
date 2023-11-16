@@ -10,8 +10,7 @@ intents:
 - close_game
 - start_game
 - close_tutorial_popup
-- move 
-- forward
+- move
 - stop
 - shoot
 - jump
