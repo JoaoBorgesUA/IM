@@ -485,7 +485,7 @@ async function InitializeKWS(){
                         var message = { 'intent': 'change_color', 'shape': shape, 'color': color }
                         break;
                 }
-
+                console.log(message)
                 var messaget = btoa(unescape(encodeURIComponent(final_transcript)));
                 var result = { "recognized": ["SPEECH", "SPEECHIN", "APP"], "text": messaget, "nlu": message };
                 mmiCli_1.sendToIM(new LifeCycleEvent("SPEECHIN", "IM", "text-1", "ctx-1").

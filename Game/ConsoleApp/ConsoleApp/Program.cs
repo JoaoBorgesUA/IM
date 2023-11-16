@@ -216,36 +216,38 @@ class Program
                          *  CLICK - Disparar 
                          */
 
-                        if (intent == "forward")    // Tecla 'w' - Subir/Andar pra frente
-                        {
-                                try
-                                {
-                                    sim.Keyboard.KeyDown(VirtualKeyCode.VK_W);
-                                    lastKeyUsed = VirtualKeyCode.VK_W;
-                                }
-                            catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.ToString());
-                                }
-                        }
-
                         if (intent=="move")
                         {
                             try
                             {
                                 switch (direction)
                                 {
+                                    case "frente":
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_W);
+                                        lastKeyUsed = VirtualKeyCode.VK_W;
+                                        Thread.Sleep(1500);
+                                        sim.Keyboard.KeyUp(VirtualKeyCode.VK_W);
+                                        break;
+
                                     case "esquerda":
                                         sim.Keyboard.KeyDown(VirtualKeyCode.VK_A);
                                         lastKeyUsed = VirtualKeyCode.VK_A;
+                                        Thread.Sleep(1500);
+                                        sim.Keyboard.KeyUp(VirtualKeyCode.VK_A);
                                         break;
+
                                     case "direita":
                                         sim.Keyboard.KeyDown(VirtualKeyCode.VK_D);
                                         lastKeyUsed = VirtualKeyCode.VK_D;
+                                        Thread.Sleep(1500);
+                                        sim.Keyboard.KeyUp(VirtualKeyCode.VK_D);
                                         break;
+
                                     case "trás":
                                         sim.Keyboard.KeyDown(VirtualKeyCode.VK_S);
                                         lastKeyUsed = VirtualKeyCode.VK_S;
+                                        Thread.Sleep(1500);
+                                        sim.Keyboard.KeyUp(VirtualKeyCode.VK_S);
                                         break;
                                 }
 
@@ -291,7 +293,7 @@ class Program
                                     if (amount == "muito")
                                     {
                                         sim.Mouse.LeftButtonDown();
-                                        Thread.Sleep(800);
+                                        Thread.Sleep(1500);
                                         sim.Mouse.LeftButtonUp();
                                     }
                                     else
@@ -304,7 +306,9 @@ class Program
                                 }
                                 else
                                 {
-                                    sim.Mouse.LeftButtonClick();
+                                    sim.Mouse.LeftButtonDown();
+                                    Thread.Sleep(400);
+                                    sim.Mouse.LeftButtonUp();
                                 }
 
 
@@ -327,16 +331,16 @@ class Program
                                 switch (direction)
                                 {
                                     case "esquerda":
-                                        sim.Mouse.MoveMouseBy(-180, 0);
+                                        sim.Mouse.MoveMouseBy(-300, 0);
                                         break;
                                     case "direita":
-                                        sim.Mouse.MoveMouseBy(180, 0);
+                                        sim.Mouse.MoveMouseBy(300, 0);
                                         break;
                                     case "cima":
-                                        sim.Mouse.MoveMouseBy(0, 180);
+                                        sim.Mouse.MoveMouseBy(0, 300);
                                         break;
                                     case "baixo":
-                                        sim.Mouse.MoveMouseBy(0, -180);
+                                        sim.Mouse.MoveMouseBy(0, -300);
                                         break;
                                 }
 
@@ -352,7 +356,7 @@ class Program
                             try
                             {
                                 sim.Keyboard.KeyDown(VirtualKeyCode.VK_E);
-                                Thread.Sleep(50);
+                                Thread.Sleep(100);
                                 sim.Keyboard.KeyUp(VirtualKeyCode.VK_E);
                             }
                             catch (Exception ex)
@@ -365,7 +369,7 @@ class Program
                             try
                             {
                                 sim.Keyboard.KeyDown(VirtualKeyCode.VK_R);
-                                Thread.Sleep(50);
+                                Thread.Sleep(100);
                                 sim.Keyboard.KeyUp(VirtualKeyCode.VK_R);
                             }
                             catch (Exception ex)
@@ -378,7 +382,7 @@ class Program
                             try
                             {
                                 sim.Keyboard.KeyDown(VirtualKeyCode.VK_F);
-                                Thread.Sleep(50);
+                                Thread.Sleep(100);
                                 sim.Keyboard.KeyUp(VirtualKeyCode.VK_F);
                             }
                             catch (Exception ex)
@@ -398,7 +402,7 @@ class Program
                                 Console.WriteLine(ex.ToString());
                             }
                         }
-                        if (intent == "shoot")
+                        if (intent == "grenade")
                         {
                             try
                             {
@@ -407,13 +411,13 @@ class Program
                                     if (distance == "alto" || distance == "longe")
                                     {
                                         sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
-                                        Thread.Sleep(800);
+                                        Thread.Sleep(1500);
                                         sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
                                     }
                                     else
                                     {
                                         sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
-                                        Thread.Sleep(300);
+                                        Thread.Sleep(400);
                                         sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
                                     }
                                     distance = null;
@@ -421,7 +425,7 @@ class Program
                                 else
                                 {
                                     sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
-                                    Thread.Sleep(50);
+                                    Thread.Sleep(100);
                                     sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
                                 }
                             }

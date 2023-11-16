@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Game",
-    "\\Game\\ConsoleApp",
     "\\Game\\ConsoleApp\\ConsoleApp",
+    "\\Game\\rasaDemo",
+    "\\Game\\rasaDemo\\data",
     "\\Game\\WebAppAssistantV2"
   ],
+  "SelectedNode": "\\Game\\rasaDemo\\data\\nlu.yml",
   "PreviewInSolutionExplorer": false
 }
