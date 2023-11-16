@@ -495,9 +495,13 @@ async function InitializeKWS(){
           var message = { 'intent': 'logout' };
           break;
 
-        case ('affirm'):
-          var message = { 'intent': 'affirm' };
+        case ('confirm_event'):
+          var message = { 'intent': 'confirm_event' };
           break;
+
+        case ('unconfirmed_event'):
+        var message = { 'intent': 'unconfirmed_event' };
+        break;
 
         case ('change_color'):
           var shape = '';

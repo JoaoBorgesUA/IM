@@ -159,9 +159,27 @@ nlu:
     - [Hora 10](eventhour) e [minutos 30](eventminutes)
     - [Hora 14](eventhour) e [minutos 30](eventminutes)
     - [As horas são 10](eventhour) e os [minutos 30](eventminutes)
+    - [As horas são 14](eventhour) e os [minutos 30](eventminutes)
     - [Hora 10](eventhour) e [5 minutos](eventminutes)
     - [Horario [10](eventhour) e [5 minutos](eventminutes) 
     
+- intent: confirm_event
+  examples: |
+    - Confirmar evento
+    - Guardar evento
+    - Sim confirmo 
+    - Claro que confirmo 
+    - Quero confirmar 
+    - Quero guardar o evento
+    
+- intent: unconfirmed_event
+  examples: |
+    - Não Confirmar evento
+    - Não guardar evento
+    - Não confirmo 
+    - Não quero um novo evento afinal
+    - Quero quero confirma
+    - Desculpa afinal não quero criar um novo evento
 
 - intent: logout
   examples: |

@@ -67,8 +67,7 @@ class Program
         bool myaccount = false;     // check if we already are on our account
         bool authn_open = false;    // check if we are in the authentication page
         bool notf_open = false;
-        bool events_open = false;   // check if we are in the events page (inside our account)
-        bool popup_newevent = false;    // check if we can say the values for a new event
+        bool confirm_new_event = false;
 
         while (client.State == WebSocketState.Open)
         {
@@ -101,6 +100,7 @@ class Program
                         Console.WriteLine(messageJSON["nlu"]);
 
                         string intent = (string)messageJSON["nlu"]["intent"];
+
                         if (intent == "open_elearning")
                         {
                             driver.Navigate().GoToUrl("https://elearning.ua.pt/");
@@ -165,6 +165,7 @@ class Program
                                 {
                                     if (student_nmec == "98678")
                                     {
+                                        // Insert here your credencials 
                                         string user = "";
                                         string password = "";
 
@@ -256,7 +257,7 @@ class Program
                                 IWebElement new_event_Bttn = driver.FindElement(By.CssSelector("button[data-action='new-event-button']"));
                                 new_event_Bttn.Click();
 
-                                await SendMessage(client, messageMMI("Por favor, agora primeiro o nome e data do evento!"));
+                                await SendMessage(client, messageMMI("Por favor, diga primeiro o nome e a data do evento!"));
                             }
                             else 
                             {
@@ -338,11 +339,6 @@ class Program
                                     select_minutes.SelectByValue(minutes);
 
                                     await SendMessage(client, messageMMI("Pretende confirmar ?"));
-
-                                    //// Save Event
-                                    //IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='save']"));
-                                    //saveButton.Click();
-                                    //await SendMessage(client, messageMMI("Evento criado"));
                                 }
                             }
                             else{
@@ -350,15 +346,17 @@ class Program
                             }
                         }
 
-                        if (intent == "affirm")
+                        if (intent == "confirm_event")
                         {
-                            //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(100));
-                            //IWebElement saveButton = wait.Until(x => x.FindElement(By.CssSelector("button[data-action='save']")));
-                            //saveButton.Click();
-
                             IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='save']"));
                             saveButton.Click();
                             await SendMessage(client, messageMMI("Evento criado"));
+                        }
+
+                        if (intent == "unconfirmed_event")
+                        {
+                            IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='hide']"));
+                            saveButton.Click();
                         }
 
                         if (intent == "logout")

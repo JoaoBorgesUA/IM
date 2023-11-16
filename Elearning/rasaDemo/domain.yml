@@ -16,6 +16,8 @@ intents:
 - schedule_event
 - name_date_newevent
 - time_newevent
+- confirm_event
+- unconfirmed_event
 - logout
 entities:
 - place
