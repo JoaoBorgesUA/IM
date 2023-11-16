@@ -11,6 +11,7 @@ intents:
 - authenticate
 - insert_data_authn
 - see_notifications
+- close_notifications
 - see_events
 - schedule_event
 - name_date_newevent

@@ -425,6 +425,10 @@ async function InitializeKWS(){
         case ('see_notifications'): 
           var message = { 'intent': 'see_notifications' };
           break;
+        
+        case ('close_notifications'): 
+          var message = { 'intent': 'close_notifications' };
+          break;
 
         case ('see_events'): 
           var message = { 'intent': 'see_events' };
@@ -461,7 +465,6 @@ async function InitializeKWS(){
                         };
 
           console.log(message)
-              
           break;
 
         case ('time_newevent'):
@@ -475,6 +478,10 @@ async function InitializeKWS(){
             if (data.entities[i].entity == 'eventminutes')
               eventminutes = data.entities[i].value;
           }
+
+          eventhour = (eventhour.match(/\d+/g))[0];
+          eventminutes = (eventminutes.match(/\d+/g))[0];
+          // console.log("eventhour: " + eventhour + " eventminutes: " + eventminutes)
 
           var message = { 'intent': 'time_newevent', 
                           'eventhour': eventhour, 
