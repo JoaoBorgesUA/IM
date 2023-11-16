@@ -29,6 +29,7 @@ nlu:
     - Okay
     - Ok
     - sim
+    - Confirmo
 
 - intent: deny
   examples: |
@@ -80,6 +81,8 @@ nlu:
     - Abrir portal da ua
     - Abrir portal da universidade de aveiro 
     - Ir ao portal da univerisdade 
+    - Ir para o portal da ua 
+    - Ir para o portal da universidade de aveiro
 
 - intent: close_elearning
   examples: |
@@ -114,9 +117,16 @@ nlu:
 - intent: see_notifications
   examples: |
     - Quero ver as minhas notificacoes por favor 
-    - Ver notificações
+    - Ver as notificações por favor 
     - Mostra me as notificações por favor
-    - Notificações 
+    - Ver notificações
+    
+- intent: close_notifications
+  examples: |
+    - Não quero ver mais as notificações
+    - Fechar notificações por favor
+    - Fechar notificações 
+    - Ja vi as notificações
 
 - intent: see_events
   examples: |
@@ -146,11 +156,11 @@ nlu:
     
 - intent: time_newevent
   examples: |
-    - Hora [10](eventhour) e minutos [30](eventminutes)
-    - Hora [14](eventhour) e minutos [30](eventminutes)
-    - As horas são [10](eventhour) e os minutos [30](eventminutes)
-    - Hora [10](eventhour) e minuto [5](eventminutes)
-    - Horario [10](eventhour) e [5](eventminutes) minutos 
+    - [Hora 10](eventhour) e [minutos 30](eventminutes)
+    - [Hora 14](eventhour) e [minutos 30](eventminutes)
+    - [As horas são 10](eventhour) e os [minutos 30](eventminutes)
+    - [Hora 10](eventhour) e [5 minutos](eventminutes)
+    - [Horario [10](eventhour) e [5 minutos](eventminutes) 
     
 
 - intent: logout

@@ -64,8 +64,9 @@ class Program
         IWebDriver driver = new ChromeDriver(options);
 
         bool website_open = false;  // check if website is already opened
-        bool authn_open = false;    // check if we are in the authentication page
         bool myaccount = false;     // check if we already are on our account
+        bool authn_open = false;    // check if we are in the authentication page
+        bool notf_open = false;
         bool events_open = false;   // check if we are in the events page (inside our account)
         bool popup_newevent = false;    // check if we can say the values for a new event
 
@@ -169,7 +170,7 @@ class Program
 
                                         if (user == "" || password == "")   // just to debug 
                                         {
-                                            await SendMessage(client, messageMMI("A palavra-passe fornecida está incorreta."));
+                                            await SendMessage(client, messageMMI("Diga os dados de autenticação, por favor !"));
                                         }
                                         else
                                         {
@@ -216,6 +217,22 @@ class Program
                             {
                                 IWebElement see_notifications = driver.FindElement(By.Id("nav-notification-popover-container"));
                                 see_notifications.Click();
+
+                                notf_open = true;
+                            }
+                            else
+                            {
+                                await SendMessage(client, messageMMI("Ainda não está autenticado !"));
+                            }
+                        }
+
+                        if (intent == "close_notifications")
+                        {
+                            if (myaccount && notf_open)
+                            {
+                                IWebElement close_notifications = driver.FindElement(By.Id("nav-notification-popover-container"));
+                                close_notifications.Click();
+                                notf_open = false;
                             }
                         }
 
@@ -225,45 +242,23 @@ class Program
                             {
                                 IWebElement see_events = driver.FindElement(By.CssSelector("a[title='Eventos']")); 
                                 see_events.Click();
-
-                                events_open = true;
+                            }
+                            else
+                            {
+                                await SendMessage(client, messageMMI("Ainda não está autenticado !"));
                             }
                         }
 
                         if(intent == "schedule_event")  // create a new event 
                         {
-                            if (myaccount & events_open)    
+                            if (myaccount)
                             {
                                 IWebElement new_event_Bttn = driver.FindElement(By.CssSelector("button[data-action='new-event-button']"));
                                 new_event_Bttn.Click();
 
-                                popup_newevent = true;
-
-                                if (popup_newevent)
-                                {
-                                    await SendMessage(client, messageMMI("Por favor, Primeiro diga o nome e a data do evento !"));
-                                }
+                                await SendMessage(client, messageMMI("Por favor, agora primeiro o nome e data do evento!"));
                             }
-                            else if(myaccount & !events_open)  // if we want to create a new event -- go directly to new event popup
-                            {
-                                IWebElement see_events = driver.FindElement(By.CssSelector("a[title='Eventos']"));  // go to events section
-                                see_events.Click();
-                                events_open = true;
-
-                                if (events_open)
-                                {
-                                    IWebElement new_event_Bttn = driver.FindElement(By.CssSelector("button[data-action='new-event-button']"));
-                                    new_event_Bttn.Click();
-
-                                    popup_newevent = true;
-
-                                    if (popup_newevent)
-                                    {
-                                        await SendMessage(client, messageMMI("Por favor, Primeiro diga o nome e a data do evento !"));
-                                    }
-                                }
-                            }
-                            else  // we aren't in our account
+                            else 
                             {
                                 await SendMessage(client, messageMMI("Ainda não está autenticado !"));
                             }
@@ -271,15 +266,14 @@ class Program
 
                         if (intent == "name_date_newevent") // insert data values new event 
                         {
-                            //if (myaccount & events_open & popup_newevent)
-                            if (myaccount & events_open)
+                            if (myaccount)
                             {
                                 string name = messageJSON["nlu"]["eventname"];
                                 string day = messageJSON["nlu"]["eventday"];
                                 string month = messageJSON["nlu"]["eventmonth"];
                                 string year = messageJSON["nlu"]["eventyear"];
 
-                                Console.WriteLine("name: " + name + " day: " + day + " month: " + month + " year: " + year);
+                                //Console.WriteLine("name: " + name + " day: " + day + " month: " + month + " year: " + year);
 
                                 if (name == "" || day == "" || month == "" || year == "")
                                 {
@@ -309,15 +303,16 @@ class Program
 
                                     await SendMessage(client, messageMMI("Por favor, agora diga a hora do evento!"));
                                 }
-
-                                
+                            }
+                            else
+                            {
+                                await SendMessage(client, messageMMI("Ainda não está autenticado !"));
                             }
                         }
 
                         if (intent == "time_newevent")
                         {
-                            //if (myaccount & events_open & popup_newevent)
-                            if (myaccount & events_open)
+                            if (myaccount)
                             {
                                 string hour = messageJSON["nlu"]["eventhour"];
                                 string minutes = messageJSON["nlu"]["eventminutes"];
@@ -325,44 +320,46 @@ class Program
                                 if (hour == "")
                                 {
                                     await SendMessage(client, messageMMI("Não entendi. Repita a hora por favor"));
-                                }else if (minutes == "")
+                                }
+                                else if (minutes == "")
                                 {
                                     await SendMessage(client, messageMMI("Não entendi. Repita a hora por favor"));
                                 }
                                 else
                                 {
-                                    //// Send event hour
+                                    // Send event hour
                                     IWebElement select_event_hour = driver.FindElement(By.Id("id_timestart_hour"));
                                     SelectElement select_hour = new SelectElement(select_event_hour);
                                     select_hour.SelectByValue(hour);
 
-                                    //// Send event minutes 
+                                    // Send event minutes 
                                     IWebElement select_event_minutes = driver.FindElement(By.Id("id_timestart_minute"));
                                     SelectElement select_minutes = new SelectElement(select_event_minutes);
                                     select_minutes.SelectByValue(minutes);
 
-                                    //await SendMessage(client, messageMMI("Pretende confirmar ?"));
+                                    await SendMessage(client, messageMMI("Pretende confirmar ?"));
 
-                                    IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='save']"));
-                                    saveButton.Click();
-                                    await SendMessage(client, messageMMI("Evento criado"));
+                                    //// Save Event
+                                    //IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='save']"));
+                                    //saveButton.Click();
+                                    //await SendMessage(client, messageMMI("Evento criado"));
                                 }
-
+                            }
+                            else{
+                                await SendMessage(client, messageMMI("Ainda não está autenticado !"));
                             }
                         }
 
-                        //if (intent == "affirm")
-                        //{
-                        //    //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(100));
-                        //    //IWebElement saveButton = wait.Until(x => x.FindElement(By.CssSelector("button[data-action='save']")));
-                        //    //saveButton.Click();
+                        if (intent == "affirm")
+                        {
+                            //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(100));
+                            //IWebElement saveButton = wait.Until(x => x.FindElement(By.CssSelector("button[data-action='save']")));
+                            //saveButton.Click();
 
-                        //    IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='save']"));
-                        //    saveButton.Click();
-                        //    await SendMessage(client, messageMMI("Evento criado"));
-
-                        //    events_open= false;   
-                        //}
+                            IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='save']"));
+                            saveButton.Click();
+                            await SendMessage(client, messageMMI("Evento criado"));
+                        }
 
                         if (intent == "logout")
                         {
@@ -392,12 +389,6 @@ class Program
                         await SendMessage(client, messageMMI("Não entendi. Repita por favor !"));
                     }
                 }
-
-                //IWebElement button_new_event = driver.FindElement(By.CssSelector("button[data-action='new-event-button']"));
-                //if (!button_new_event.Enabled)
-                //{
-                //    popup_newevent = false;
-                //}
             }
         }
     }
