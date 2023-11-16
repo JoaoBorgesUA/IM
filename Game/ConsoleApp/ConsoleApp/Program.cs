@@ -13,6 +13,8 @@ using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using WindowsInput;
 using WindowsInput.Native;
+using System.ComponentModel;
+using OpenQA.Selenium.DevTools.V117.PerformanceTimeline;
 
 class Program
 {
@@ -58,6 +60,8 @@ class Program
         //IWebDriver driver = new ChromeDriver();
         bool gameOpen = false;
         bool gameStart = false;
+        bool aiming = false;
+        VirtualKeyCode lastKeyUsed = VirtualKeyCode.SPACE;
 
         while (client.State == WebSocketState.Open)
         {
@@ -87,6 +91,9 @@ class Program
                     if (messageJSON["nlu"] != null)
                     {
                         string intent = (string)messageJSON["nlu"]["intent"];
+                        string amount = (string)messageJSON["nlu"]["amount"];
+                        string direction = (string)messageJSON["nlu"]["direction"];
+                        string distance = (string)messageJSON["nlu"]["distance"];
 
                         if (intent == "open_game")
                         {
@@ -185,6 +192,7 @@ class Program
                         {
                             if (gameOpen)
                             {
+
                                 IWebElement closePopup = driver.FindElement(By.ClassName("roundme_sm popup_close clickme"));
                                 closePopup.Click();
                             }
@@ -210,44 +218,36 @@ class Program
 
                         if (intent == "forward")    // Tecla 'w' - Subir/Andar pra frente
                         {
-                            if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
-                            {
                                 try
                                 {
                                     sim.Keyboard.KeyDown(VirtualKeyCode.VK_W);
-                                    Thread.Sleep(1000);
-                                    sim.Keyboard.KeyUp(VirtualKeyCode.VK_W);
+                                    lastKeyUsed = VirtualKeyCode.VK_W;
                                 }
-                                catch (Exception ex)
+                            catch (Exception ex)
                                 {
                                     Console.WriteLine(ex.ToString());
                                 }
-                            }
                         }
 
-                        //action.SendKeys(OpenQA.Selenium.Keys.Escape).Build().Perform(); // sair da tela total
-
-                        if (intent == "jump")
-                        {
-                            //if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
-                            //{
-                                try{
-                                sim.Keyboard.KeyDown(VirtualKeyCode.SPACE);
-                                Thread.Sleep(50);
-                                sim.Keyboard.KeyUp(VirtualKeyCode.SPACE);
-                                }
-                                catch (Exception ex){
-                                    Console.WriteLine(ex.ToString());
-                                }
-                            //}
-                        }
-
-                        if (intent == "shoot")  
+                        if (intent=="move")
                         {
                             try
                             {
-                                sim.Mouse.LeftButtonClick();
-                                sim.Mouse.MoveMouseBy(100, 0);
+                                switch (direction)
+                                {
+                                    case "esquerda":
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_A);
+                                        lastKeyUsed = VirtualKeyCode.VK_A;
+                                        break;
+                                    case "direita":
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_D);
+                                        lastKeyUsed = VirtualKeyCode.VK_D;
+                                        break;
+                                    case "trás":
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_S);
+                                        lastKeyUsed = VirtualKeyCode.VK_S;
+                                        break;
+                                }
 
                             }
                             catch (Exception ex)
@@ -256,18 +256,178 @@ class Program
                             }
                         }
 
-                        if (intent == "look aside")    // Tecla 'w' - Subir/Andar pra frente
+                        if (intent == "stop")
                         {
-                            if (gameOpen && gameStart)  // Se jogo aberto e tivermos na arena
+                            try
                             {
-                                try
-                                {
-                                    sim.Mouse.MoveMouseBy(100, 0);
+                                sim.Keyboard.KeyUp(lastKeyUsed);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+
+                        //action.SendKeys(OpenQA.Selenium.Keys.Escape).Build().Perform(); // sair da tela total
+
+                        if (intent == "jump")
+                        {
+                                try{
+                                sim.Keyboard.KeyDown(VirtualKeyCode.SPACE);
+                                Thread.Sleep(50);
+                                sim.Keyboard.KeyUp(VirtualKeyCode.SPACE);
                                 }
-                                catch (Exception ex)
-                                {
+                                catch (Exception ex){
                                     Console.WriteLine(ex.ToString());
                                 }
+                        }
+
+                        if (intent == "shoot")  
+                        {
+                            try
+                            {
+                                if (amount != null)
+                                {
+                                    if (amount == "muito")
+                                    {
+                                        sim.Mouse.LeftButtonDown();
+                                        Thread.Sleep(800);
+                                        sim.Mouse.LeftButtonUp();
+                                    }
+                                    else
+                                    {
+                                        sim.Mouse.LeftButtonDown();
+                                        Thread.Sleep(400);
+                                        sim.Mouse.LeftButtonUp();
+                                    }
+                                    amount= null;
+                                }
+                                else
+                                {
+                                    sim.Mouse.LeftButtonClick();
+                                }
+
+
+                                if (aiming == true){
+                                    sim.Keyboard.KeyUp(VirtualKeyCode.SHIFT);
+                                    aiming = false;
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+
+                        if (intent == "look")    // Tecla 'w' - Subir/Andar pra frente
+                        {
+                            try
+                            {
+                                switch (direction)
+                                {
+                                    case "esquerda":
+                                        sim.Mouse.MoveMouseBy(-180, 0);
+                                        break;
+                                    case "direita":
+                                        sim.Mouse.MoveMouseBy(180, 0);
+                                        break;
+                                    case "cima":
+                                        sim.Mouse.MoveMouseBy(0, 180);
+                                        break;
+                                    case "baixo":
+                                        sim.Mouse.MoveMouseBy(0, -180);
+                                        break;
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+
+                        if (intent == "change_weapon")
+                        {
+                            try
+                            {
+                                sim.Keyboard.KeyDown(VirtualKeyCode.VK_E);
+                                Thread.Sleep(50);
+                                sim.Keyboard.KeyUp(VirtualKeyCode.VK_E);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+                        if (intent == "reload")
+                        {
+                            try
+                            {
+                                sim.Keyboard.KeyDown(VirtualKeyCode.VK_R);
+                                Thread.Sleep(50);
+                                sim.Keyboard.KeyUp(VirtualKeyCode.VK_R);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+                        if (intent == "melee")
+                        {
+                            try
+                            {
+                                sim.Keyboard.KeyDown(VirtualKeyCode.VK_F);
+                                Thread.Sleep(50);
+                                sim.Keyboard.KeyUp(VirtualKeyCode.VK_F);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+                        if (intent == "aim")
+                        {
+                            try
+                            {
+                                sim.Keyboard.KeyDown(VirtualKeyCode.SHIFT);
+                                aiming = !aiming;
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                        }
+                        if (intent == "shoot")
+                        {
+                            try
+                            {
+                                if (distance != null)
+                                {
+                                    if (distance == "alto" || distance == "longe")
+                                    {
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
+                                        Thread.Sleep(800);
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
+                                    }
+                                    else
+                                    {
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
+                                        Thread.Sleep(300);
+                                        sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
+                                    }
+                                    distance = null;
+                                }
+                                else
+                                {
+                                    sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
+                                    Thread.Sleep(50);
+                                    sim.Keyboard.KeyDown(VirtualKeyCode.VK_Q);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
                             }
                         }
                     }
