@@ -161,7 +161,7 @@ class Program
                                     string msg = messageMMI("Por Favor repita o número do aluno !");
                                     await SendMessage(client, msg);
                                 }
-                                else
+                                else 
                                 {
                                     if (student_nmec == "98678")
                                     {
@@ -302,7 +302,11 @@ class Program
                                     SelectElement select_year = new SelectElement(select_event_year);
                                     select_year.SelectByValue(year);
 
-                                    await SendMessage(client, messageMMI("Por favor, agora diga a hora do evento!"));
+                                    await SendMessage(client, messageMMI("Se pretender manter as horas, por favor confirme."));
+
+                                    await SendMessage(client, messageMMI("Caso contrário, diga a hora do evento!"));
+
+
                                 }
                             }
                             else
@@ -358,6 +362,7 @@ class Program
                             IWebElement saveButton = driver.FindElement(By.CssSelector("button[data-action='hide']"));
                             saveButton.Click();
                         }
+
 
                         if (intent == "logout")
                         {

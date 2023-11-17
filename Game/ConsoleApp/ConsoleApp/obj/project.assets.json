@@ -3927,19 +3927,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\João Borges\\.nuget\\packages\\": {}
+    "C:\\Users\\35191\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+      "projectUniqueName": "C:\\Users\\35191\\Documents\\UA\\5_Ano\\IM\\Assignment2\\Git\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
       "projectName": "ConsoleApp",
-      "projectPath": "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
-      "packagesPath": "C:\\Users\\João Borges\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\João Borges\\Downloads\\IM\\Game\\ConsoleApp\\ConsoleApp\\obj\\",
+      "projectPath": "C:\\Users\\35191\\Documents\\UA\\5_Ano\\IM\\Assignment2\\Git\\IM\\Game\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+      "packagesPath": "C:\\Users\\35191\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\35191\\Documents\\UA\\5_Ano\\IM\\Assignment2\\Git\\IM\\Game\\ConsoleApp\\ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\João Borges\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\35191\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4010,7 +4015,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -4019,7 +4024,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'InputSimulatorPlus 1.0.7' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net6.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "message": "Package 'InputSimulatorPlus 1.0.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "InputSimulatorPlus",
       "targetGraphs": [
         "net6.0"
